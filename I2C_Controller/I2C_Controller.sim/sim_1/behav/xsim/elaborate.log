@@ -7,4 +7,13 @@ Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-3823] variable 'sclk' might have multiple concurrent drivers [C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/my_sim.sv:11]
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.baud_rate_generator
+Compiling module xil_defaultlib.Top_Module
+Compiling module xil_defaultlib.my_sim
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot my_sim_behav

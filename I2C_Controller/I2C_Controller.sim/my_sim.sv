@@ -11,7 +11,7 @@ module my_sim();
     initial begin
         sys_clk = 0;
         reset_n = 1;
-        sclk = 1;
+        sclk = 0;
     end
 
     always begin

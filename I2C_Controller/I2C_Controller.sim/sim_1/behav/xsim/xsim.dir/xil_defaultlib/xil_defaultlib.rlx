@@ -2,7 +2,7 @@
 2020.2
 Oct 13 2023
 20:47:58
-C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/my_sim.sv,1785918062,systemVerilog,,,,my_sim,,uvm,,,,,,
+C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/my_sim.sv,1786009951,systemVerilog,,,,my_sim,,uvm,,,,,,
 C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/sim_1/behav/xsim/glbl.v,1697210495,verilog,,,,glbl,,uvm,,,,,,
 C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/Top_Module.sv,1785917999,systemVerilog,,C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/baud_rate_generator.sv,,Top_Module,,uvm,,,,,,
-C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/baud_rate_generator.sv,1785917711,systemVerilog,,C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/my_sim.sv,,baud_rate_generator,,uvm,,,,,,
+C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/baud_rate_generator.sv,1786009854,systemVerilog,,C:/Users/DennisWong/Documents/Personal/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/my_sim.sv,,baud_rate_generator,,uvm,,,,,,

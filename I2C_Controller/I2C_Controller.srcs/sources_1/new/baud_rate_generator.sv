@@ -12,7 +12,7 @@ module baud_rate_generator #(
     output sys_tick
 );
 
-reg [31:0] counterTick = 0;         // for synthesizing the clock
+reg [6:0] counterTick = 0;         // for synthesizing the clock
 reg sys_tick_reg = 0;
 
 
@@ -20,14 +20,14 @@ always_ff @ (posedge sys_clk)
     begin
         if(!reset_n)
             begin
-                counterTick <= 32'd0;
+                counterTick <= 'd0;
             end
         else
             begin
-                if(counterTick <10)
+                if(counterTick == 'd10)
                     begin
-                        sys_tick_reg    <= 'd0;
-                        counterTick     <= 'd1;
+                        sys_tick_reg    <= 'd1;
+                        counterTick     <= 'd0;
                     end
                 else
                     begin
