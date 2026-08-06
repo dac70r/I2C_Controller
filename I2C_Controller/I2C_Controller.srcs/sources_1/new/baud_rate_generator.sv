@@ -1,0 +1,42 @@
+/*
+    Description: This module generates the tick for which the i2c clock will rely on. I2C clock is 400Khz, and we shall employ an oversampling rate of 16x.
+*/
+
+module baud_rate_generator #(
+    parameter  readBytes = 2,
+                stopBitTick = 16
+)
+(
+    input sys_clk,
+    input reset_n,
+    output sys_tick
+);
+
+reg [31:0] counterTick = 0;         // for synthesizing the clock
+reg sys_tick_reg = 0;
+
+
+always_ff @ (posedge sys_clk)
+    begin
+        if(!reset_n)
+            begin
+                counterTick <= 32'd0;
+            end
+        else
+            begin
+                if(counterTick <10)
+                    begin
+                        sys_tick_reg    <= 'd0;
+                        counterTick     <= 'd1;
+                    end
+                else
+                    begin
+                        sys_tick_reg    <= 'd0;
+                        counterTick <= counterTick + 'd1;
+                    end
+            end
+    end
+
+assign sys_tick = sys_tick_reg;
+    
+endmodule
