@@ -14,6 +14,8 @@ module my_sim();
         reset_n = 1;
         sclk = 0;
         cmd = 3'b000;
+        #2790;
+        cmd = 3'b001;
     end
 
     always begin

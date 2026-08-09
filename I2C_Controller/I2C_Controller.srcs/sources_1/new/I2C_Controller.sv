@@ -18,22 +18,28 @@ module I2C_Controller(
     data1, data2, data3, data4, data_end} state_type;
     
     state_type stateNow, stateNext = idle;
-    reg i2c_sclk_reg_now, i2c_sclk_reg_next = 'd1;
-    reg i2c_sda_reg_now, i2c_sda_reg_next = 'd1;
+    reg i2c_sclk_reg_now = 'd1; 
+    reg i2c_sclk_reg_next = 'd1;
+    reg i2c_sda_reg_now = 'd1;
+    reg i2c_sda_reg_next = 'd1;
+    reg [4:0] dataBit_now = 'd0;
+    reg [4:0] dataBit_next = 'd0;
     
     always_ff @ (posedge sys_tick)
     begin
         if (!reset_n)
             begin
                 stateNow            <= idle;
-                i2c_sclk_reg_now    <= 'd1; // idle
-                i2c_sda_reg_now     <= 'd1; // idle
+                i2c_sclk_reg_now    <= 'd1;     // idle
+                i2c_sda_reg_now     <= 'd1;     // idle
+                dataBit_now         <= 'd0;     // idle
             end
         else
             begin
                 stateNow <= stateNext;
                 i2c_sclk_reg_now <= i2c_sclk_reg_next;
                 i2c_sda_reg_now <= i2c_sda_reg_next;
+                dataBit_now     <= dataBit_next;
             end
     end
     
@@ -45,14 +51,11 @@ module I2C_Controller(
         case(stateNow)
             idle:
                 begin
+                    i2c_sclk_reg_next = 'd1;    // idle condition
+                    i2c_sda_reg_next = 'd1;
                     if(cmd==START_CMD)
                         begin
                             stateNext = start1;         // start condition
-                        end
-                    else
-                        begin
-                            i2c_sclk_reg_next = 'd1;    // idle condition
-                            i2c_sda_reg_next = 'd1;
                         end
                 end
             start1:
@@ -89,6 +92,37 @@ module I2C_Controller(
                         begin
                             stateNext = hold;
                         end
+                end
+            data1:
+                begin
+                    stateNext = data2;
+                end
+            data2:
+                begin
+                    stateNext = data3;
+                end
+            data3:
+                begin
+                    stateNext = data4;
+                end
+            data4:
+                begin
+                    if(dataBit_next <8)
+                        begin stateNext = data1; dataBit_next = dataBit_next + 'd1; end
+                    else
+                        stateNext = data_end;
+                end
+            data_end:
+                begin
+                    stateNext = hold;
+                end
+            stop1:
+                begin
+                    stateNext = hold;
+                end   
+            stop2:
+                begin
+                    stateNext = hold;
                 end
             default:
                 begin
