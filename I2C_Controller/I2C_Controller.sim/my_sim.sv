@@ -4,6 +4,7 @@ module my_sim();
     logic reset_n;
     logic sclk;
     logic [3:0] cmd;
+    
     wire sda;
 
     Top_Module 
@@ -12,10 +13,11 @@ module my_sim();
     initial begin
         sys_clk = 0;
         reset_n = 1;
-        sclk = 0;
-        cmd = 3'b000;
-        #2790;
-        cmd = 3'b001;
+        sclk = 1;
+        #100;
+        cmd = 3'b000;       // write 
+        #1000;
+        cmd = 3'b011;       // stop    
     end
 
     always begin
