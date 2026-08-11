@@ -31,7 +31,9 @@ module I2C_Controller(
     reg [4:0] dataByte_now = 'd0;
     reg [4:0] dataByte_next = 'd0;
     reg read_write_reg = 'd0;                       // this register keeps track of whether read/ write was selected during i2c addressing stage 0 for write, 1 for read.
-    // reg i2c_sda_out_en = 'd1;                    // this register keeps track of whether i2c sda bus is input or output
+    reg read_write_reg_next = 'd0;
+    reg i2c_sda_out_en = 'd1;                    // this register keeps track of whether i2c sda bus is input or output
+    reg i2c_sda_out_en_next = 'd1;
     
     always_ff @ (posedge sys_tick)
     begin
@@ -42,6 +44,8 @@ module I2C_Controller(
                 i2c_sda_reg_now     <= 'd1;     // idle
                 dataBit_now         <= 'd0;     // idle
                 dataByte_now        <= 'd0;     // idle
+                read_write_reg      <= 'd0;
+                i2c_sda_out_en      <= 'd1;
             end
         else
             begin
@@ -50,6 +54,8 @@ module I2C_Controller(
                 i2c_sda_reg_now     <= i2c_sda_reg_next;
                 dataBit_now         <= dataBit_next;
                 dataByte_now        <= dataByte_next;
+                read_write_reg      <= read_write_reg_next;
+                i2c_sda_out_en      <= i2c_sda_out_en_next;
             end
     end
     
@@ -59,7 +65,10 @@ module I2C_Controller(
         i2c_sclk_reg_next   = i2c_sclk_reg_now;
         i2c_sda_reg_next    = i2c_sda_reg_now;
         dataBit_next        = dataBit_now;
-        dataByte_now        = dataByte_now;
+        dataByte_next       = dataByte_now;
+        read_write_reg_next = read_write_reg;
+        i2c_sda_out_en_next = i2c_sda_out_en;
+
         case(stateNow)
             idle:
                 begin
@@ -68,15 +77,15 @@ module I2C_Controller(
                     if(cmd == WR_CMD || cmd == RD_CMD)
                         begin
                             if(cmd==WR_CMD)
-                                read_write_reg = 'd0;
+                                read_write_reg_next = 'd0;
                             else
-                                read_write_reg = 'd1;  
+                                read_write_reg_next = 'd1;  
                             stateNext   = start1; 
                         end
                     else
                         begin
                             stateNext   = idle;
-                            read_write_reg = 'd0; 
+                            read_write_reg_next = 'd0; 
                         end
                 end
             start1:
@@ -96,7 +105,7 @@ module I2C_Controller(
                 begin
                     i2c_sclk_reg_next   = 'd0;    // hold condition 
                     i2c_sda_reg_next    = 'd0;
-                    if(cmd == WR_CMD || RD_CMD)
+                    if(cmd == WR_CMD || cmd == RD_CMD)
                         begin
                             stateNext = data1;    
                         end
@@ -122,11 +131,12 @@ module I2C_Controller(
                     // process the read_write bit (SDA)
                     if(dataBit_next == 7)
                         begin   
-                            i2c_sda_reg_next = read_write_reg;
+                            i2c_sda_reg_next = read_write_reg_next;
                         end
                     if(dataBit_next == 8)
-                        begin   
-                            i2c_sda_reg_next = 1'dZ;
+                        begin
+                            i2c_sda_out_en_next = 'd0;   
+//                            i2c_sda_reg_next = 1'dZ;
                         end      
                 end
             addr2:
@@ -137,11 +147,12 @@ module I2C_Controller(
                     // process the read_write bit (SDA)
                     if(dataBit_next == 7)
                         begin   
-                            i2c_sda_reg_next = read_write_reg;
+                            i2c_sda_reg_next = read_write_reg_next;
                         end
                     if(dataBit_next == 8)
                         begin
-                            i2c_sda_reg_next = 1'dZ;
+                            i2c_sda_out_en_next = 'd0; 
+//                            i2c_sda_reg_next = 1'dZ;
                         end   
                 end
             addr3:
@@ -152,11 +163,12 @@ module I2C_Controller(
                     // process the read_write bit (SDA)
                     if(dataBit_next == 7)
                         begin   
-                            i2c_sda_reg_next = read_write_reg;
+                            i2c_sda_reg_next = read_write_reg_next;
                         end
                     if(dataBit_next == 8)
                         begin   
-                            i2c_sda_reg_next = 1'dZ;
+                            i2c_sda_out_en_next = 'd0; 
+//                            i2c_sda_reg_next = 1'dZ;
                         end   
                 end
             addr4:
@@ -172,17 +184,19 @@ module I2C_Controller(
                         begin
                             stateNext = addr1; 
                             dataBit_next = dataBit_next + 'd1;
-                            i2c_sda_reg_next   = read_write_reg;
+                            i2c_sda_reg_next   = read_write_reg_next;
                         end
                     else
                         begin 
                             stateNext = addr_end; 
-                            i2c_sda_reg_next = 1'dZ;
+                            i2c_sda_out_en_next = 'd0; 
+//                            i2c_sda_reg_next = 1'dZ;
                         end   
                 end
                 
             addr_end:
                 begin
+                    i2c_sda_out_en_next      = 'd1; 
                     dataBit_next        = 'd0;
                     i2c_sda_reg_next    = 'd0;
                     i2c_sclk_reg_next   = 'd0;  // data_end condition 
@@ -193,60 +207,75 @@ module I2C_Controller(
                 begin
                     stateNext = data2;
                     i2c_sclk_reg_next   = 'd0;                                  // SCLK 0
-                    if(read_write_reg == 'd0)   // write
+                    if(read_write_reg_next == 'd0)   // write
                         begin
                             i2c_sda_reg_next   = i2c_eight_bit_opcode[7-dataBit_next];  
                             // process the read_write bit (SDA)
                             if(dataBit_next == 8)
-                                begin   
-                                    i2c_sda_reg_next = 1'dZ;
+                                begin
+                                    i2c_sda_out_en_next = 'd0;    
+                                    //i2c_sda_reg_next = 1'dZ;
                                 end
                         end
                     else
                         begin
-                            i2c_sda_reg_next = 1'dZ; 
+                            i2c_sda_reg_next = 1'dZ;
+                            if(dataBit_next == 8 && dataByte_next == 1)
+                                begin
+                                    i2c_sda_reg_next = 1'd1;
+                                end
                         end     
                 end
             data2:
                 begin
                     stateNext = data3;
                     i2c_sclk_reg_next   = 'd1;  // 1
-                    if(read_write_reg == 'd0)   // write
+                    if(read_write_reg_next == 'd0)   // write
                         begin
                             i2c_sda_reg_next   = i2c_eight_bit_opcode[7-dataBit_next];   
                             // process the read_write bit (SDA)
                             if(dataBit_next == 8)
                                 begin
-                                    i2c_sda_reg_next = 1'dZ;
+                                    i2c_sda_out_en_next = 'd0;    
+                                    //i2c_sda_reg_next = 1'dZ;
                                 end
                         end
                     else
                         begin
                             i2c_sda_reg_next = 1'dZ;
+                            if(dataBit_next == 8 && dataByte_next == 1)
+                                begin
+                                    i2c_sda_reg_next = 1'd1;
+                                end
                         end   
                 end
             data3:
                 begin
                     stateNext = data4;
                     i2c_sclk_reg_next   = 'd1;  // 1
-                    if(read_write_reg == 'd0)   // write
+                    if(read_write_reg_next == 'd0)   // write
                         begin
                             i2c_sda_reg_next    = i2c_eight_bit_opcode[7-dataBit_next];  
                             // process the read_write bit (SDA)
                             if(dataBit_next == 8)
                                 begin   
-                                    i2c_sda_reg_next = 1'dZ;
+                                    i2c_sda_out_en_next = 'd0;    
+                                    //i2c_sda_reg_next = 1'dZ;
                                 end 
                         end
                     else
                         begin
-                            i2c_sda_reg_next = 1'dZ;   
+                            i2c_sda_reg_next = 1'dZ;
+                            if(dataBit_next == 8 && dataByte_next == 1)
+                                begin
+                                    i2c_sda_reg_next = 1'd1;
+                                end   
                         end    
                 end
             data4:
                 begin
                     i2c_sclk_reg_next = 'd0;  // 0
-                    if(read_write_reg == 'd0)   // write
+                    if(read_write_reg_next == 'd0)   // write
                         begin
                             i2c_sda_reg_next    = i2c_eight_bit_opcode[7-dataBit_next];   
                             if(dataBit_next <8)
@@ -257,13 +286,26 @@ module I2C_Controller(
                             else
                                 begin 
                                     stateNext = data_end; 
-                                    i2c_sda_reg_next = 1'dZ;
+                                    i2c_sda_out_en_next = 'd0;    
+                                    //i2c_sda_reg_next = 1'dZ;
                                 end  
                         end
                     else
                         begin
-                            if()
-                            i2c_sda_reg_next = 1'dZ;
+                            if(dataBit_next <8)
+                                begin 
+                                    stateNext = data1; 
+                                    dataBit_next = dataBit_next + 'd1;
+                                end
+                            else
+                                begin 
+                                    stateNext = data_end; 
+                                    i2c_sda_reg_next = 1'dZ;
+                                    if(dataBit_next == 8 && dataByte_next == 1)
+                                        begin
+                                            i2c_sda_reg_next = 1'd1;
+                                        end
+                                end  
                         end 
                 end
             
@@ -272,7 +314,19 @@ module I2C_Controller(
                     dataBit_next        = 'd0;
                     i2c_sda_reg_next    = 'd0;
                     i2c_sclk_reg_next   = 'd0;  // data_end condition 
-                    stateNext = stop1;
+                    i2c_sda_out_en_next = 'd1;    
+                    if(read_write_reg_next == 'd1)
+                        begin
+                            if(dataByte_next == NUMBER_OF_READ_BYTES-1)
+                                stateNext = stop1;
+                            else
+                                begin 
+                                    stateNext = data1; 
+                                    dataByte_next = dataByte_next + 'd1;    // increment byte and continue collecting data
+                                end
+                        end
+                    else    // else is write, goto stop1 straight forward
+                        stateNext = stop1;  
                 end
                 
             stop1:
@@ -298,6 +352,6 @@ module I2C_Controller(
     
 
     assign i2c_sclk = i2c_sclk_reg_now;
-    assign i2c_sda = i2c_sda_reg_now;
+    assign i2c_sda = (i2c_sda_out_en == 'd1) ? i2c_sda_reg_now : 'dZ;
 
 endmodule

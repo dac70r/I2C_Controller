@@ -16,8 +16,10 @@ module my_sim();
         sclk = 1;
         #100;
         cmd = 3'b000;       // write 
-        #1000;
-        cmd = 3'b011;       // stop    
+        #50000;
+//        cmd = 3'b001;       // read   
+//        #1000;
+//        cmd = 3'b111;       // stop     
     end
 
     always begin

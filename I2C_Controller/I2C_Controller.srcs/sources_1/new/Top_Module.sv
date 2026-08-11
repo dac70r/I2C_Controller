@@ -10,7 +10,7 @@ module Top_Module (
     inout sda
 );
     reg [6:0] i2c_seven_bit_addr_reg = 7'b010_0011;         // 7-bit i2c address
-    reg [7:0] i2c_eight_bit_addr_reg = 8'b0001_0000;        // 8-bit opecode (config data) 
+    reg [7:0] i2c_eight_bit_addr_reg = 8'b0001_0001;        // 8-bit opecode (config data) 
     
     wire sys_tick;
     wire pll_output_clk;    // Output Clock from clocking wizard          

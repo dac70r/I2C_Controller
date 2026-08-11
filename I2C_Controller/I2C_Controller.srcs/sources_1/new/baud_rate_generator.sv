@@ -7,12 +7,12 @@ module baud_rate_generator #(
                 stopBitTick = 16
 )
 (
-    input sys_clk, //40Mhz
+    input sys_clk,                      //40Mhz
     input reset_n,
     output sys_tick
 );
 
-reg [26:0] counterTick = 0;         // for synthesizing the clock
+reg [26:0] counterTick = 0;             // for synthesizing the clock
 reg sys_tick_reg = 0;
 
 
@@ -24,7 +24,7 @@ always_ff @ (posedge sys_clk)
             end
         else
             begin
-                if(counterTick == 'd24) //400khz
+                if(counterTick == 'd99) //400khz
                     begin
                         sys_tick_reg    <= 'd1;
                         counterTick     <= 'd0;

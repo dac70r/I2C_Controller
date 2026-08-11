@@ -1,0 +1,9 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../I2C_Controller.ip_user_files/ipstatic" \
+"my_sim_func_impl.v" \
+
+sv xil_defaultlib  --include "../../../../../I2C_Controller.ip_user_files/ipstatic" \
+"../../../../my_sim.sv" \
+
+# Do not sort compile order
+nosort

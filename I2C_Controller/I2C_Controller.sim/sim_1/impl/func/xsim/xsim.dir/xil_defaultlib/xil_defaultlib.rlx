@@ -1,0 +1,6 @@
+0.7
+2020.2
+Oct 13 2023
+20:47:58
+C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/my_sim.sv,1786280490,systemVerilog,,,,my_sim,,uvm,../../../../../I2C_Controller.ip_user_files/ipstatic,,,,,
+C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/sim_1/impl/func/xsim/my_sim_func_impl.v,1786462941,verilog,,,,I2C_Controller;Top_Module;baud_rate_generator;glbl;sys_pll;sys_pll_clk_wiz,,uvm,../../../../../I2C_Controller.ip_user_files/ipstatic,,,,,
