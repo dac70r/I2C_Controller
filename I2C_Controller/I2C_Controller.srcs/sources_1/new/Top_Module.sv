@@ -7,9 +7,10 @@ module Top_Module (
     input reset_n,
     input [3:0] cmd, 
     output sclk,
-    inout sda
+    inout sda,
+    output i2c_transaction_complete
 );
-    reg [6:0] i2c_seven_bit_addr_reg = 7'b010_0011;         // 7-bit i2c address
+    reg [6:0] i2c_seven_bit_addr_reg = 7'b010_0011;         // 7-bit i2c address (0x23)
     reg [7:0] i2c_eight_bit_addr_reg = 8'b0001_0001;        // 8-bit opecode (config data) 
     
     wire sys_tick;
@@ -28,7 +29,8 @@ module Top_Module (
         .i2c_seven_bit_addr(i2c_seven_bit_addr_reg),    
         .i2c_eight_bit_opcode(i2c_eight_bit_addr_reg),
         .i2c_sclk(sclk),
-        .i2c_sda(sda)
+        .i2c_sda(sda),
+        .i2c_transaction_complete(i2c_transaction_complete)
     );    
     
 endmodule

@@ -15,3 +15,5 @@ set_property src_info {type:XDC file:1 line:171 export:INPUT save:INPUT read:REA
 set_property PACKAGE_PIN A14 [get_ports sda]
 set_property src_info {type:XDC file:1 line:176 export:INPUT save:INPUT read:READ} [current_design]
 set_property PACKAGE_PIN A16 [get_ports sclk]
+set_property src_info {type:XDC file:1 line:181 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN B15 [get_ports {i2c_transaction_complete}]

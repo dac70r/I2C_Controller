@@ -24,7 +24,7 @@ always_ff @ (posedge sys_clk)
             end
         else
             begin
-                if(counterTick == 'd99) //400khz
+                if(counterTick == 'd24) //400khz
                     begin
                         sys_tick_reg    <= 'd1;
                         counterTick     <= 'd0;

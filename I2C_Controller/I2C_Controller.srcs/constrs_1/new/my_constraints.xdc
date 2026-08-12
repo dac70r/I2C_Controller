@@ -178,8 +178,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports sclk]
 set_property PULLUP true [get_ports sclk]
 
 ##Sch name = JB3
-#set_property PACKAGE_PIN B15 [get_ports {JB[2]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {JB[2]}]
+set_property PACKAGE_PIN B15 [get_ports {i2c_transaction_complete}]
+set_property IOSTANDARD LVCMOS33 [get_ports {i2c_transaction_complete}]
 ##Sch name = JB4
 #set_property PACKAGE_PIN B16 [get_ports {JB[3]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {JB[3]}]
