@@ -6,6 +6,7 @@ I2C is a half-duplex communication protocol, only a single controller can claim 
 
 ## Version Control
 - 4/8/2026 Init
+- 13/8/2026 I2C Controller Complete & Able to Interface with BH1750. Lacks fine tuning and additional features.
 
 ## Appendix
 
