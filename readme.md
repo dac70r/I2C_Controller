@@ -4,6 +4,8 @@ This I2C Controller is designed to accomodate the BH1750FVI Ambient Light Sensor
 ## I2C Protocol Overview
 I2C is a half-duplex communication protocol, only a single controller can claim ownership of the I2C bus at a given time. Communication is initiated and ceased exclusively by an I2C Controller - which eliminates bus contention problems. That said, multiple controllers may connect to the I2C bus at the same time. 
 
+![Alt text](images/screenshot.png)
+
 ## Version Control
 - 4/8/2026 Init
 - 13/8/2026 I2C Controller Complete & Able to Interface with BH1750. Lacks fine tuning and additional features.
@@ -23,6 +25,8 @@ I2C Address is natively 7-bit. One might encounter 8-bit read/write address, whi
 
 ### I2C Start and Stop
 
-sda:    1   0   0 ....      ....    0   0   1
-scl:    1   1   0 ....      ....    0   1   1
+- sda:    1   0   0 ....      ....    0   0   1
+- scl:    1   1   0 ....      ....    0   1   1
+
+
 

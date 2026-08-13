@@ -11,28 +11,31 @@ module I2C_Controller(
         output i2c_transaction_complete
     );
     
-    localparam NUMBER_OF_READ_BYTES = 2'b10;    // read 2 bytes
-    localparam START_CMD = 3'b111;
-    localparam WR_CMD = 3'b000;
-    localparam RD_CMD = 3'b001;
-    localparam STOP_CMD = 3'b011;
-    localparam RESTART_CMD = 3'b100;
+    localparam DELAY_COUNT_BETWEEN_READ = 17'd72000;    // 180ms / (1/400kHz)
+    localparam NUMBER_OF_READ_BYTES     = 2'b10;        // read 2 bytes
+    localparam START_CMD                = 3'b111;
+    localparam WR_CMD                   = 3'b000;
+    localparam RD_CMD                   = 3'b001;
+    localparam STOP_CMD                 = 3'b011;
+    localparam RESTART_CMD              = 3'b100;
     
     typedef enum {idle, start1, start2, hold, restart, stop1, stop2, 
-    addr1, addr2, addr3, addr4, addr_end, data1, data2, data3, data4, data_end} state_type;
+                    addr1, addr2, addr3, addr4, addr_end, data1, data2, 
+                    data3, data4, data_end, delay} state_type;
     
     state_type stateNow, stateNext = idle;
     reg i2c_sclk_reg_now = 'd1; reg i2c_sclk_reg_next = 'd1;    // SCL reg
     reg i2c_sda_reg_now = 'd1; reg i2c_sda_reg_next = 'd1;      // SDA reg
     reg i2c_transaction_complete_now = 'd0; reg i2c_transaction_complete_next = 'd0;
     
-    reg [4:0] dataBit_now = 'd0; reg [4:0] dataBit_next = 'd0;      // 0~7 data bits + ACK/NACK
-    reg [4:0] dataByte_now = 'd0; reg [4:0] dataByte_next = 'd0;    // 0~NUMBER_OF_READ_BYTES-1
-    reg read_write_reg = 'd0; reg read_write_reg_next = 'd0;        // this register keeps track of whether read/ write was selected during i2c addressing stage 0 for write, 1 for read.
-    reg i2c_sda_out_en = 'd1; reg i2c_sda_out_en_next = 'd1;        // this register keeps track of whether i2c sda bus is input or output
+    reg [16:0] delayCountNow = 'd0;  reg [16:0] delayCountNext = 'd0;
+    reg [4:0] dataBit_now = 'd0;    reg [4:0] dataBit_next = 'd0;         // 0~7 data bits + ACK/NACK
+    reg [4:0] dataByte_now = 'd0;   reg [4:0] dataByte_next = 'd0;        // 0~NUMBER_OF_READ_BYTES-1
+    reg read_write_reg = 'd0;       reg read_write_reg_next = 'd0;        // this register keeps track of whether read/ write was selected during i2c addressing stage 0 for write, 1 for read.
+    reg i2c_sda_out_en = 'd1;       reg i2c_sda_out_en_next = 'd1;        // this register keeps track of whether i2c sda bus is input or output
     
     
-    always_ff @ (posedge sys_tick)
+    always_ff @ (posedge sys_tick)              // sys_tick is 
     begin
         if (!reset_n)
             begin
@@ -44,6 +47,7 @@ module I2C_Controller(
                 read_write_reg      <= 'd0;
                 i2c_sda_out_en      <= 'd1;
                 i2c_transaction_complete_now <= 'd0;
+                delayCountNow       <= 'd0;
             end
         else
             begin
@@ -55,6 +59,7 @@ module I2C_Controller(
                 read_write_reg      <= read_write_reg_next;
                 i2c_sda_out_en      <= i2c_sda_out_en_next;
                 i2c_transaction_complete_now <= i2c_transaction_complete_next;
+                delayCountNow       <= delayCountNext;
             end
     end
     
@@ -68,6 +73,7 @@ module I2C_Controller(
         read_write_reg_next = read_write_reg;
         i2c_sda_out_en_next = i2c_sda_out_en;
         i2c_transaction_complete_next = i2c_transaction_complete_now;
+        delayCountNext      = delayCountNow;
         case(stateNow)
             idle:
                 begin
@@ -363,7 +369,17 @@ module I2C_Controller(
                     i2c_sda_reg_next = 'd1;
                     i2c_sclk_reg_next = 'd1;    // stop2 condition
                     i2c_transaction_complete_next = 'd1;    // we raise this flag high for 1 clock cycle. 
-                    stateNext = idle;
+                    stateNext = delay;
+                end
+            delay:
+                begin
+                    if(delayCountNext == DELAY_COUNT_BETWEEN_READ-1)
+                        begin 
+                            delayCountNext = 'd0;
+                            stateNext = idle;
+                        end
+                    else
+                        delayCountNext = delayCountNext + 'd1;
                 end
             default:
                 begin
