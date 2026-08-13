@@ -300,11 +300,11 @@ set_property IOSTANDARD LVCMOS33 [get_ports {i2c_transaction_complete}]
 
 ##USB-RS232 Interface
 ##Bank = 16, Pin name = ,					Sch name = UART_TXD_IN
-#set_property PACKAGE_PIN B18 [get_ports rx]
-#set_property IOSTANDARD LVCMOS33 [get_ports rx]
+set_property PACKAGE_PIN B18        [get_ports uart_rx]
+set_property IOSTANDARD LVCMOS33    [get_ports uart_rx]
 ##Bank = 16, Pin name = ,					Sch name = UART_RXD_OUT
-#set_property PACKAGE_PIN A18 [get_ports tx]
-#set_property IOSTANDARD LVCMOS33 [get_ports tx]
+set_property PACKAGE_PIN A18        [get_ports uart_tx]
+set_property IOSTANDARD LVCMOS33    [get_ports uart_tx]
 
 
 

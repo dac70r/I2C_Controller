@@ -3,8 +3,7 @@
 */
 
 module baud_rate_generator #(
-    parameter  readBytes = 2,
-                stopBitTick = 16
+    parameter  counterTickMax = 999
 )
 (
     input sys_clk,                      //40Mhz
@@ -24,7 +23,7 @@ always_ff @ (posedge sys_clk)
             end
         else
             begin
-                if(counterTick == 'd24) //400khz
+                if(counterTick == counterTickMax) //400khz
                     begin
                         sys_tick_reg    <= 'd1;
                         counterTick     <= 'd0;

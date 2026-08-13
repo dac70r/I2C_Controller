@@ -1,18 +1,21 @@
 `timescale 1ns / 1ps
 
-module I2C_Controller(
-        input sys_tick,         // 400kHz * 4  
-        input reset_n,
+module I2C_Core # (parameter 
+                readBytes = 2,
+                readBits = 16)(
+        input       sys_tick,         // 400kHz * 4  
+        input       reset_n,
         input [3:0] cmd,         
         input [6:0] i2c_seven_bit_addr,
         input [7:0] i2c_eight_bit_opcode,
-        output i2c_sclk,
-        inout i2c_sda,
-        output i2c_transaction_complete
+        output      i2c_sclk,
+        inout       i2c_sda,
+        output      [readBits-1: 0] i2c_sda_read_bit, 
+        output      i2c_transaction_complete
     );
     
-    localparam DELAY_COUNT_BETWEEN_READ = 17'd72000;    // 180ms / (1/400kHz)
-    localparam NUMBER_OF_READ_BYTES     = 2'b10;        // read 2 bytes
+    localparam DELAY_COUNT_BETWEEN_READ = 19'd288_000;    // 180ms / (1/400kHz)
+    //localparam NUMBER_OF_READ_BYTES     = 2'b10;        // read 2 bytes
     localparam START_CMD                = 3'b111;
     localparam WR_CMD                   = 3'b000;
     localparam RD_CMD                   = 3'b001;
@@ -21,19 +24,20 @@ module I2C_Controller(
     
     typedef enum {idle, start1, start2, hold, restart, stop1, stop2, 
                     addr1, addr2, addr3, addr4, addr_end, data1, data2, 
-                    data3, data4, data_end, delay} state_type;
+                    data3, data4, data_end, delay1, delay2} state_type;
     
     state_type stateNow, stateNext = idle;
     reg i2c_sclk_reg_now = 'd1; reg i2c_sclk_reg_next = 'd1;    // SCL reg
     reg i2c_sda_reg_now = 'd1; reg i2c_sda_reg_next = 'd1;      // SDA reg
     reg i2c_transaction_complete_now = 'd0; reg i2c_transaction_complete_next = 'd0;
     
-    reg [16:0] delayCountNow = 'd0;  reg [16:0] delayCountNext = 'd0;
+    reg [18:0] delayCountNow = 'd0;  reg [18:0] delayCountNext = 'd0;
     reg [4:0] dataBit_now = 'd0;    reg [4:0] dataBit_next = 'd0;         // 0~7 data bits + ACK/NACK
     reg [4:0] dataByte_now = 'd0;   reg [4:0] dataByte_next = 'd0;        // 0~NUMBER_OF_READ_BYTES-1
     reg read_write_reg = 'd0;       reg read_write_reg_next = 'd0;        // this register keeps track of whether read/ write was selected during i2c addressing stage 0 for write, 1 for read.
     reg i2c_sda_out_en = 'd1;       reg i2c_sda_out_en_next = 'd1;        // this register keeps track of whether i2c sda bus is input or output
-    
+    reg [readBits-1:0] i2c_sda_read_bit_now = 'd0;  reg [readBits-1:0] i2c_sda_read_bit_next = 'd0;
+    reg [5:0] readBitCount_now = 'd0; reg [5:0] readBitCount_next = 'd0;
     
     always_ff @ (posedge sys_tick)              // sys_tick is 
     begin
@@ -46,8 +50,10 @@ module I2C_Controller(
                 dataByte_now        <= 'd0;     // idle
                 read_write_reg      <= 'd0;
                 i2c_sda_out_en      <= 'd1;
+                i2c_sda_read_bit_now<= 'd0;
                 i2c_transaction_complete_now <= 'd0;
                 delayCountNow       <= 'd0;
+                readBitCount_now    <= 'd0;
             end
         else
             begin
@@ -59,7 +65,9 @@ module I2C_Controller(
                 read_write_reg      <= read_write_reg_next;
                 i2c_sda_out_en      <= i2c_sda_out_en_next;
                 i2c_transaction_complete_now <= i2c_transaction_complete_next;
+                i2c_sda_read_bit_now<= i2c_sda_read_bit_next;
                 delayCountNow       <= delayCountNext;
+                readBitCount_now    <= readBitCount_next;
             end
     end
     
@@ -72,8 +80,10 @@ module I2C_Controller(
         dataByte_next       = dataByte_now;
         read_write_reg_next = read_write_reg;
         i2c_sda_out_en_next = i2c_sda_out_en;
+        i2c_sda_read_bit_next = i2c_sda_read_bit_now;
         i2c_transaction_complete_next = i2c_transaction_complete_now;
         delayCountNext      = delayCountNow;
+        readBitCount_next   = readBitCount_now;
         case(stateNow)
             idle:
                 begin
@@ -228,7 +238,7 @@ module I2C_Controller(
                             if(dataBit_next == 8)                           // Ack bit
                                 begin
                                     i2c_sda_out_en_next = 'd1; 
-                                    if(dataByte_next == NUMBER_OF_READ_BYTES-1)                  // Reached Packet End 
+                                    if(dataByte_next == readBytes-1)                  // Reached Packet End 
                                         begin              
                                             i2c_sda_reg_next = 'd1;        // NACK
                                         end
@@ -255,10 +265,11 @@ module I2C_Controller(
                         end
                     else
                         begin                        // i2c read command
+                            i2c_sda_read_bit_next[readBitCount_next] = i2c_sda;
                             if(dataBit_next == 8)                           
                                 begin
                                     i2c_sda_out_en_next = 'd1; 
-                                    if(dataByte_next == NUMBER_OF_READ_BYTES-1) // Reached Packet End 
+                                    if(dataByte_next == readBytes-1) // Reached Packet End 
                                         begin              
                                             i2c_sda_reg_next = 'd1;        
                                         end
@@ -285,10 +296,11 @@ module I2C_Controller(
                         end
                     else                            // i2c read command
                         begin
+                            i2c_sda_read_bit_next[readBitCount_next] = i2c_sda;
                             if(dataBit_next == 8)                           
                                 begin
                                     i2c_sda_out_en_next = 'd1; 
-                                    if(dataByte_next == NUMBER_OF_READ_BYTES-1)                  // Reached Packet End 
+                                    if(dataByte_next == readBytes-1)                  // Reached Packet End 
                                         begin              
                                             i2c_sda_reg_next = 'd1;        
                                         end
@@ -321,6 +333,7 @@ module I2C_Controller(
                         end
                     else
                         begin
+                            readBitCount_next = readBitCount_next + 'd1;
                             if(dataBit_next <8)
                                 begin
                                     i2c_sda_out_en_next = 'd0; 
@@ -330,7 +343,7 @@ module I2C_Controller(
                             else
                                 begin
                                     i2c_sda_out_en_next = 'd1; 
-                                    if(dataByte_now == NUMBER_OF_READ_BYTES - 1) begin      
+                                    if(dataByte_now == readBytes - 1) begin      
                                         stateNext = data_end;
                                         i2c_sda_reg_next = 'd1;                             // Send NACK
                                     end else begin 
@@ -349,7 +362,8 @@ module I2C_Controller(
                     dataByte_next        = 'd0;
                     i2c_sda_reg_next    = 'd0;
                     i2c_sclk_reg_next   = 'd0;  // data_end condition 
-                    i2c_sda_out_en_next = 'd1;    
+                    i2c_sda_out_en_next = 'd1;  
+                    readBitCount_next   = 'd0;  
                     if(read_write_reg_next == 'd1)
                         begin
                             stateNext = stop1;  
@@ -369,9 +383,16 @@ module I2C_Controller(
                     i2c_sda_reg_next = 'd1;
                     i2c_sclk_reg_next = 'd1;    // stop2 condition
                     i2c_transaction_complete_next = 'd1;    // we raise this flag high for 1 clock cycle. 
-                    stateNext = delay;
+                    stateNext = delay1;
                 end
-            delay:
+            delay1:                                         // delay1 is solely to deassert i2c_transaction_complete
+                begin
+                    i2c_sda_reg_next = 'd1;
+                    i2c_sclk_reg_next = 'd1;                // idle condition
+                    i2c_transaction_complete_next = 'd0;    // we raise this flag high for 1 clock cycle. 
+                    stateNext = delay2;
+                end
+            delay2:
                 begin
                     if(delayCountNext == DELAY_COUNT_BETWEEN_READ-1)
                         begin 
@@ -394,5 +415,5 @@ module I2C_Controller(
     assign i2c_sclk = i2c_sclk_reg_now;
     assign i2c_sda = (i2c_sda_out_en == 'd1) ? i2c_sda_reg_now : 'dZ;
     assign i2c_transaction_complete = i2c_transaction_complete_now;
-
+    assign i2c_sda_read_bit = i2c_sda_read_bit_now;
 endmodule
