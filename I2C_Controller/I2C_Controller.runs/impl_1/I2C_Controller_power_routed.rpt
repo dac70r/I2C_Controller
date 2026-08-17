@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Fri Aug 14 00:33:11 2026
+| Date             : Tue Aug 18 00:15:35 2026
 | Host             : DennisE16 running 64-bit major release  (build 9200)
 | Command          : report_power -file I2C_Controller_power_routed.rpt -pb I2C_Controller_power_summary_routed.pb -rpx I2C_Controller_power_routed.rpx
 | Design           : I2C_Controller
@@ -53,15 +53,15 @@ Table of Contents
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
 | Clocks         |    <0.001 |        8 |       --- |             --- |
-| Slice Logic    |    <0.001 |      142 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       59 |     20800 |            0.28 |
+| Slice Logic    |    <0.001 |      199 |       --- |             --- |
+|   LUT as Logic |    <0.001 |       80 |     20800 |            0.38 |
 |   CARRY4       |    <0.001 |        7 |      8150 |            0.09 |
-|   Register     |    <0.001 |       45 |     41600 |            0.11 |
+|   Register     |    <0.001 |       67 |     41600 |            0.16 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
 |   Others       |     0.000 |        8 |       --- |             --- |
-| Signals        |    <0.001 |      117 |       --- |             --- |
+| Signals        |    <0.001 |      172 |       --- |             --- |
 | MMCM           |     0.106 |        1 |         5 |           20.00 |
-| I/O            |     0.003 |       10 |       106 |            9.43 |
+| I/O            |     0.003 |       31 |       106 |           29.25 |
 | Static Power   |     0.072 |          |           |                 |
 | Total          |     0.182 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+

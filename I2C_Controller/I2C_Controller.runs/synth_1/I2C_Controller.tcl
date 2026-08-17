@@ -88,6 +88,8 @@ set_property ip_output_repo {c:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Co
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
+read_verilog {{C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/i2c_peripheral.vh}}
+set_property file_type "Verilog Header" [get_files {{C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/i2c_peripheral.vh}}]
 read_verilog -library xil_defaultlib -sv {
   {C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/I2C_Controller.sv}
   {C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/baud_rate_generator.sv}

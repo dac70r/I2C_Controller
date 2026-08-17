@@ -3,12 +3,12 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Tue Aug 11 20:55:41 2026
-# Process ID: 14348
+# Start of session at: Tue Aug 18 00:06:34 2026
+# Process ID: 37676
 # Current directory: C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Master/I2C_Master.runs/impl_1
-# Command line: vivado.exe -log Top_Module.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source Top_Module.tcl -notrace
-# Log file: C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Master/I2C_Master.runs/impl_1/Top_Module.vdi
+# Command line: vivado.exe -log my_test.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source my_test.tcl -notrace
+# Log file: C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Master/I2C_Master.runs/impl_1/my_test.vdi
 # Journal file: C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Master/I2C_Master.runs/impl_1\vivado.jou
 # Running On: DennisE16, OS: Windows, CPU Frequency: 3294 MHz, CPU Physical cores: 16, Host memory: 31854 MB
 #-----------------------------------------------------------
-source Top_Module.tcl -notrace
+source my_test.tcl -notrace

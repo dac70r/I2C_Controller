@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Aug 14 00:32:54 2026
+| Date         : Tue Aug 18 00:15:02 2026
 | Host         : DennisE16 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file I2C_Controller_control_sets_placed.rpt
 | Design       : I2C_Controller
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     9 |
-|    Minimum number of control sets                        |     9 |
+| Total control sets                                       |    26 |
+|    Minimum number of control sets                        |    26 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    43 |
+| Unused register locations in slices containing registers |   157 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,10 +39,10 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     9 |
-| >= 0 to < 4        |     4 |
+| Total control sets |    26 |
+| >= 0 to < 4        |    20 |
 | >= 4 to < 6        |     4 |
-| >= 6 to < 8        |     0 |
+| >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     0 |
 | >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
@@ -63,7 +63,7 @@ Table of Contents
 | No           | Yes                   | No                     |               5 |            2 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              36 |           16 |
+| Yes          | Yes                   | No                     |              58 |           33 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,14 +74,31 @@ Table of Contents
 |        Clock Signal        |                   Enable Signal                  |                Set/Reset Signal                | Slice Load Count | Bel Load Count | Bels / Slice |
 +----------------------------+--------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
 |  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_transaction_complete_now_i_1_n_0 | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[7]             | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[3]             | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[1]             | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[13]            | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[12]            | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[10]            | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[14]            | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[15]            | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
 |  i2c_sys_tick_BUFG         | my_I2C_Core/stateNow[4]                          | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[4]             | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[8]             | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[6]             | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[2]             | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[5]             | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[9]             | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[11]            | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/i2c_sda_read_bit_next[0]             | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                1 |              1 |         1.00 |
 |  clock_40mhz/inst/clk_out1 |                                                  |                                                |                1 |              1 |         1.00 |
 |  i2c_sys_tick_BUFG         |                                                  |                                                |                3 |              3 |         1.00 |
-|  i2c_sys_tick_BUFG         | my_I2C_Core/dataByte_now[4]_i_1_n_0              | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                2 |              5 |         2.50 |
-|  i2c_sys_tick_BUFG         | my_I2C_Core/FSM_sequential_stateNow[3]_i_2_n_0   | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                5 |              5 |         1.00 |
 |  i2c_sys_tick_BUFG         | my_I2C_Core/dataBit_now[4]_i_1_n_0               | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                2 |              5 |         2.50 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/FSM_sequential_stateNow[3]_i_2_n_0   | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                3 |              5 |         1.67 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/dataByte_now[4]_i_1_n_0              | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                2 |              5 |         2.50 |
 |  clock_40mhz/inst/clk_out1 |                                                  | i2c_baud_rate_generator/counterTick[0]_i_1_n_0 |                2 |              5 |         2.50 |
-|  i2c_sys_tick_BUFG         | my_I2C_Core/delayCountNow[18]_i_1_n_0            | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                5 |             19 |         3.80 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/readBitCount_now[5]_i_1_n_0          | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                2 |              6 |         3.00 |
+|  i2c_sys_tick_BUFG         | my_I2C_Core/delayCountNext                       | my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0 |                6 |             19 |         3.17 |
 +----------------------------+--------------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
 
 

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Aug 14 00:33:11 2026
+| Date         : Tue Aug 18 00:15:34 2026
 | Host         : DennisE16 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file I2C_Controller_methodology_drc_routed.rpt -pb I2C_Controller_methodology_drc_routed.pb -rpx I2C_Controller_methodology_drc_routed.rpx
 | Design       : I2C_Controller
@@ -23,13 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 44
+             Violations found: 65
 +-----------+------------------+------------------------------------------------------------------+------------+
 | Rule      | Severity         | Description                                                      | Violations |
 +-----------+------------------+------------------------------------------------------------------+------------+
 | TIMING-6  | Critical Warning | No common primary clock between related clocks                   | 2          |
-| TIMING-17 | Critical Warning | Non-clocked sequential cell                                      | 39         |
-| HPDR-1    | Warning          | Port pin direction inconsistency                                 | 1          |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell                                      | 61         |
 | TIMING-56 | Warning          | Missing logically or physically excluded clock groups constraint | 2          |
 +-----------+------------------+------------------------------------------------------------------+------------+
 
@@ -227,22 +226,127 @@ Related violations: <none>
 
 TIMING-17#37 Critical Warning
 Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_reg_now_reg/C is not reached by a timing clock
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[0]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#38 Critical Warning
 Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_transaction_complete_now_reg/C is not reached by a timing clock
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[10]/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#39 Critical Warning
 Non-clocked sequential cell  
-The clock pin my_I2C_Core/read_write_reg_reg/C is not reached by a timing clock
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[11]/C is not reached by a timing clock
 Related violations: <none>
 
-HPDR-1#1 Warning
-Port pin direction inconsistency  
-Hierarchical port(pin) sda direction INOUT is not consistent with the directions of the cell pins/ports found at that level of the netlist hierarchy. Please review the design and consider changing the port(pin) direction. Both drivers and loads were expected for the net (sda) connected to this Port, but both were not found.
+TIMING-17#40 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[12]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#41 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[13]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#42 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[14]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#43 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[15]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#44 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#45 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#46 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#47 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#48 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#49 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[6]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#50 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[7]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#51 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[8]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#52 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[9]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#53 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_sda_reg_now_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#54 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/i2c_transaction_complete_now_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#55 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/readBitCount_now_reg[0]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#56 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/readBitCount_now_reg[1]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#57 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/readBitCount_now_reg[2]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#58 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/readBitCount_now_reg[3]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#59 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/readBitCount_now_reg[4]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#60 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/readBitCount_now_reg[5]/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-17#61 Critical Warning
+Non-clocked sequential cell  
+The clock pin my_I2C_Core/read_write_reg_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-56#1 Warning

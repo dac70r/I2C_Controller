@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Fri Aug 14 00:33:11 2026
+| Date         : Tue Aug 18 00:15:35 2026
 | Host         : DennisE16 running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -report_unconstrained -file I2C_Controller_timing_summary_routed.rpt -pb I2C_Controller_timing_summary_routed.pb -rpx I2C_Controller_timing_summary_routed.rpx -warn_on_violation
 | Design       : I2C_Controller
@@ -44,8 +44,7 @@ Timing Summary Report
 Rule       Severity          Description                                                       Violations  
 ---------  ----------------  ----------------------------------------------------------------  ----------  
 TIMING-6   Critical Warning  No common primary clock between related clocks                    2           
-TIMING-17  Critical Warning  Non-clocked sequential cell                                       39          
-HPDR-1     Warning           Port pin direction inconsistency                                  1           
+TIMING-17  Critical Warning  Non-clocked sequential cell                                       61          
 TIMING-56  Warning           Missing logically or physically excluded clock groups constraint  2           
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
@@ -56,12 +55,12 @@ check_timing report
 
 Table of Contents
 -----------------
-1. checking no_clock (39)
+1. checking no_clock (61)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (111)
-5. checking no_input_delay (5)
-6. checking no_output_delay (3)
+4. checking unconstrained_internal_endpoints (177)
+5. checking no_input_delay (6)
+6. checking no_output_delay (20)
 7. checking multiple_clock (6)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -69,9 +68,9 @@ Table of Contents
 11. checking partial_output_delay (0)
 12. checking latch_loops (0)
 
-1. checking no_clock (39)
+1. checking no_clock (61)
 -------------------------
- There are 39 register/latch pins with no clock driven by root clock pin: i2c_baud_rate_generator/sys_tick_reg_reg/Q (HIGH)
+ There are 61 register/latch pins with no clock driven by root clock pin: i2c_baud_rate_generator/sys_tick_reg_reg/Q (HIGH)
 
 
 2. checking constant_clock (0)
@@ -84,23 +83,23 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (111)
+4. checking unconstrained_internal_endpoints (177)
 --------------------------------------------------
- There are 111 pins that are not constrained for maximum delay. (HIGH)
+ There are 177 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (5)
+5. checking no_input_delay (6)
 ------------------------------
- There are 5 input ports with no input delay specified. (HIGH)
+ There are 6 input ports with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (3)
--------------------------------
- There are 3 ports with no output delay specified. (HIGH)
+6. checking no_output_delay (20)
+--------------------------------
+ There are 20 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -145,7 +144,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-     22.441        0.000                      0                   11        0.164        0.000                      0                   11        3.000        0.000                       0                    12  
+     22.599        0.000                      0                   11        0.164        0.000                      0                   11        3.000        0.000                       0                    12  
 
 
 All user specified timing constraints are met.
@@ -174,10 +173,10 @@ sys_clk_pin           {0.000 5.000}      10.000          100.000
 Clock                     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----                     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
 sys_clk                                                                                                                                                                 3.000        0.000                       0                     1  
-  clk_out1_sys_pll         22.441        0.000                      0                   11        0.251        0.000                      0                   11       12.000        0.000                       0                     8  
+  clk_out1_sys_pll         22.599        0.000                      0                   11        0.251        0.000                      0                   11       12.000        0.000                       0                     8  
   clkfbout_sys_pll                                                                                                                                                      7.845        0.000                       0                     3  
 sys_clk_pin                                                                                                                                                             3.000        0.000                       0                     1  
-  clk_out1_sys_pll_1       22.444        0.000                      0                   11        0.251        0.000                      0                   11       12.000        0.000                       0                     8  
+  clk_out1_sys_pll_1       22.602        0.000                      0                   11        0.251        0.000                      0                   11       12.000        0.000                       0                     8  
   clkfbout_sys_pll_1                                                                                                                                                    7.845        0.000                       0                     3  
 
 
@@ -188,8 +187,8 @@ sys_clk_pin                                                                     
 
 From Clock          To Clock                WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
 ----------          --------                -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
-clk_out1_sys_pll_1  clk_out1_sys_pll         22.441        0.000                      0                   11        0.164        0.000                      0                   11  
-clk_out1_sys_pll    clk_out1_sys_pll_1       22.441        0.000                      0                   11        0.164        0.000                      0                   11  
+clk_out1_sys_pll_1  clk_out1_sys_pll         22.599        0.000                      0                   11        0.164        0.000                      0                   11  
+clk_out1_sys_pll    clk_out1_sys_pll_1       22.599        0.000                      0                   11        0.164        0.000                      0                   11  
 
 
 ------------------------------------------------------------------------------------------------
@@ -261,7 +260,7 @@ High Pulse Width  Fast    MMCME2_ADV/CLKIN1  n/a            2.000         5.000 
 From Clock:  clk_out1_sys_pll
   To Clock:  clk_out1_sys_pll
 
-Setup :            0  Failing Endpoints,  Worst Slack       22.441ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack       22.599ns,  Total Violation        0.000ns
 Hold  :            0  Failing Endpoints,  Worst Slack        0.251ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack       12.000ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
@@ -269,7 +268,7 @@ PW    :            0  Failing Endpoints,  Worst Slack       12.000ns,  Total Vio
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[0]/R
@@ -277,7 +276,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll rise@25.000ns - clk_out1_sys_pll rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -304,9 +303,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[0]/R
   -------------------------------------------------------------------    -------------------
 
@@ -327,11 +326,11 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[0]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[1]/R
@@ -339,7 +338,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll rise@25.000ns - clk_out1_sys_pll rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -366,9 +365,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
@@ -389,11 +388,11 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[1]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[2]/R
@@ -401,7 +400,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll rise@25.000ns - clk_out1_sys_pll rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -428,9 +427,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[2]/R
   -------------------------------------------------------------------    -------------------
 
@@ -451,11 +450,11 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[2]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[3]/R
@@ -463,7 +462,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll rise@25.000ns - clk_out1_sys_pll rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -490,9 +489,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/R
   -------------------------------------------------------------------    -------------------
 
@@ -513,24 +512,24 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[3]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.602ns  (required time - arrival time)
-  Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
+Slack (MET) :             22.718ns  (required time - arrival time)
+  Source:                 i2c_baud_rate_generator/counterTick_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[4]/R
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             clk_out1_sys_pll
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll rise@25.000ns - clk_out1_sys_pll rise@0.000ns)
-  Data Path Delay:        1.882ns  (logic 0.580ns (30.822%)  route 1.302ns (69.178%))
+  Data Path Delay:        1.742ns  (logic 0.580ns (33.297%)  route 1.162ns (66.703%))
   Logic Levels:           1  (LUT6=1)
-  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+  Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.549ns = ( 23.451 - 25.000 ) 
-    Source Clock Delay      (SCD):    -0.946ns
-    Clock Pessimism Removal (CPR):    0.604ns
+    Source Clock Delay      (SCD):    -0.947ns
+    Clock Pessimism Removal (CPR):    0.579ns
   Clock Uncertainty:      0.087ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.159ns
@@ -548,13 +547,13 @@ Slack (MET) :             22.602ns  (required time - arrival time)
                                                      -6.961    -4.269 r  clock_40mhz/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           1.661    -2.608    clock_40mhz/inst/clk_out1_sys_pll
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096    -2.512 r  clock_40mhz/inst/clkout1_buf/O
-                         net (fo=6, routed)           1.566    -0.946    i2c_baud_rate_generator/clk_out1
-    SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
+                         net (fo=6, routed)           1.565    -0.947    i2c_baud_rate_generator/clk_out1
+    SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.480     0.936    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+    SLICE_X36Y46         FDRE (Prop_fdre_C_Q)         0.456    -0.491 r  i2c_baud_rate_generator/counterTick_reg[3]/Q
+                         net (fo=3, routed)           0.682     0.192    i2c_baud_rate_generator/counterTick_reg[3]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I4_O)        0.124     0.316 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.480     0.795    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/R
   -------------------------------------------------------------------    -------------------
 
@@ -570,14 +569,14 @@ Slack (MET) :             22.602ns  (required time - arrival time)
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    22.005 r  clock_40mhz/inst/clkout1_buf/O
                          net (fo=6, routed)           1.446    23.451    i2c_baud_rate_generator/clk_out1
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
-                         clock pessimism              0.604    24.054    
-                         clock uncertainty           -0.087    23.967    
-    SLICE_X36Y47         FDRE (Setup_fdre_C_R)       -0.429    23.538    i2c_baud_rate_generator/counterTick_reg[4]
+                         clock pessimism              0.579    24.029    
+                         clock uncertainty           -0.087    23.942    
+    SLICE_X36Y47         FDRE (Setup_fdre_C_R)       -0.429    23.513    i2c_baud_rate_generator/counterTick_reg[4]
   -------------------------------------------------------------------
-                         required time                         23.538    
-                         arrival time                          -0.936    
+                         required time                         23.513    
+                         arrival time                          -0.795    
   -------------------------------------------------------------------
-                         slack                                 22.602    
+                         slack                                 22.718    
 
 Slack (MET) :             22.920ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[3]/C
@@ -1586,7 +1585,7 @@ High Pulse Width  Fast    MMCME2_ADV/CLKIN1  n/a            2.000         5.000 
 From Clock:  clk_out1_sys_pll_1
   To Clock:  clk_out1_sys_pll_1
 
-Setup :            0  Failing Endpoints,  Worst Slack       22.444ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack       22.602ns,  Total Violation        0.000ns
 Hold  :            0  Failing Endpoints,  Worst Slack        0.251ns,  Total Violation        0.000ns
 PW    :            0  Failing Endpoints,  Worst Slack       12.000ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
@@ -1594,7 +1593,7 @@ PW    :            0  Failing Endpoints,  Worst Slack       12.000ns,  Total Vio
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             22.444ns  (required time - arrival time)
+Slack (MET) :             22.602ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[0]/R
@@ -1602,7 +1601,7 @@ Slack (MET) :             22.444ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll_1
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll_1 rise@25.000ns - clk_out1_sys_pll_1 rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -1629,9 +1628,9 @@ Slack (MET) :             22.444ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[0]/R
   -------------------------------------------------------------------    -------------------
 
@@ -1652,11 +1651,11 @@ Slack (MET) :             22.444ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.515    i2c_baud_rate_generator/counterTick_reg[0]
   -------------------------------------------------------------------
                          required time                         23.515    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.444    
+                         slack                                 22.602    
 
-Slack (MET) :             22.444ns  (required time - arrival time)
+Slack (MET) :             22.602ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[1]/R
@@ -1664,7 +1663,7 @@ Slack (MET) :             22.444ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll_1
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll_1 rise@25.000ns - clk_out1_sys_pll_1 rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -1691,9 +1690,9 @@ Slack (MET) :             22.444ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
@@ -1714,11 +1713,11 @@ Slack (MET) :             22.444ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.515    i2c_baud_rate_generator/counterTick_reg[1]
   -------------------------------------------------------------------
                          required time                         23.515    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.444    
+                         slack                                 22.602    
 
-Slack (MET) :             22.444ns  (required time - arrival time)
+Slack (MET) :             22.602ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[2]/R
@@ -1726,7 +1725,7 @@ Slack (MET) :             22.444ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll_1
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll_1 rise@25.000ns - clk_out1_sys_pll_1 rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -1753,9 +1752,9 @@ Slack (MET) :             22.444ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[2]/R
   -------------------------------------------------------------------    -------------------
 
@@ -1776,11 +1775,11 @@ Slack (MET) :             22.444ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.515    i2c_baud_rate_generator/counterTick_reg[2]
   -------------------------------------------------------------------
                          required time                         23.515    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.444    
+                         slack                                 22.602    
 
-Slack (MET) :             22.444ns  (required time - arrival time)
+Slack (MET) :             22.602ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[3]/R
@@ -1788,7 +1787,7 @@ Slack (MET) :             22.444ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll_1
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll_1 rise@25.000ns - clk_out1_sys_pll_1 rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -1815,9 +1814,9 @@ Slack (MET) :             22.444ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/R
   -------------------------------------------------------------------    -------------------
 
@@ -1838,24 +1837,24 @@ Slack (MET) :             22.444ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.515    i2c_baud_rate_generator/counterTick_reg[3]
   -------------------------------------------------------------------
                          required time                         23.515    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.444    
+                         slack                                 22.602    
 
-Slack (MET) :             22.605ns  (required time - arrival time)
-  Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
+Slack (MET) :             22.721ns  (required time - arrival time)
+  Source:                 i2c_baud_rate_generator/counterTick_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[4]/R
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             clk_out1_sys_pll_1
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll_1 rise@25.000ns - clk_out1_sys_pll_1 rise@0.000ns)
-  Data Path Delay:        1.882ns  (logic 0.580ns (30.822%)  route 1.302ns (69.178%))
+  Data Path Delay:        1.742ns  (logic 0.580ns (33.297%)  route 1.162ns (66.703%))
   Logic Levels:           1  (LUT6=1)
-  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+  Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.549ns = ( 23.451 - 25.000 ) 
-    Source Clock Delay      (SCD):    -0.946ns
-    Clock Pessimism Removal (CPR):    0.604ns
+    Source Clock Delay      (SCD):    -0.947ns
+    Clock Pessimism Removal (CPR):    0.579ns
   Clock Uncertainty:      0.085ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.154ns
@@ -1873,13 +1872,13 @@ Slack (MET) :             22.605ns  (required time - arrival time)
                                                      -6.961    -4.269 r  clock_40mhz/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           1.661    -2.608    clock_40mhz/inst/clk_out1_sys_pll
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096    -2.512 r  clock_40mhz/inst/clkout1_buf/O
-                         net (fo=6, routed)           1.566    -0.946    i2c_baud_rate_generator/clk_out1
-    SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
+                         net (fo=6, routed)           1.565    -0.947    i2c_baud_rate_generator/clk_out1
+    SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.480     0.936    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+    SLICE_X36Y46         FDRE (Prop_fdre_C_Q)         0.456    -0.491 r  i2c_baud_rate_generator/counterTick_reg[3]/Q
+                         net (fo=3, routed)           0.682     0.192    i2c_baud_rate_generator/counterTick_reg[3]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I4_O)        0.124     0.316 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.480     0.795    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/R
   -------------------------------------------------------------------    -------------------
 
@@ -1895,14 +1894,14 @@ Slack (MET) :             22.605ns  (required time - arrival time)
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    22.005 r  clock_40mhz/inst/clkout1_buf/O
                          net (fo=6, routed)           1.446    23.451    i2c_baud_rate_generator/clk_out1
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
-                         clock pessimism              0.604    24.054    
-                         clock uncertainty           -0.085    23.970    
-    SLICE_X36Y47         FDRE (Setup_fdre_C_R)       -0.429    23.541    i2c_baud_rate_generator/counterTick_reg[4]
+                         clock pessimism              0.579    24.029    
+                         clock uncertainty           -0.085    23.945    
+    SLICE_X36Y47         FDRE (Setup_fdre_C_R)       -0.429    23.516    i2c_baud_rate_generator/counterTick_reg[4]
   -------------------------------------------------------------------
-                         required time                         23.541    
-                         arrival time                          -0.936    
+                         required time                         23.516    
+                         arrival time                          -0.795    
   -------------------------------------------------------------------
-                         slack                                 22.605    
+                         slack                                 22.721    
 
 Slack (MET) :             22.923ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[3]/C
@@ -2884,14 +2883,14 @@ Max Period  n/a     MMCME2_ADV/CLKFBOUT  n/a            213.360       10.000    
 From Clock:  clk_out1_sys_pll_1
   To Clock:  clk_out1_sys_pll
 
-Setup :            0  Failing Endpoints,  Worst Slack       22.441ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack       22.599ns,  Total Violation        0.000ns
 Hold  :            0  Failing Endpoints,  Worst Slack        0.164ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[0]/R
@@ -2899,7 +2898,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll rise@25.000ns - clk_out1_sys_pll_1 rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -2927,9 +2926,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[0]/R
   -------------------------------------------------------------------    -------------------
 
@@ -2950,11 +2949,11 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[0]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[1]/R
@@ -2962,7 +2961,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll rise@25.000ns - clk_out1_sys_pll_1 rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -2990,9 +2989,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
@@ -3013,11 +3012,11 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[1]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[2]/R
@@ -3025,7 +3024,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll rise@25.000ns - clk_out1_sys_pll_1 rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -3053,9 +3052,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[2]/R
   -------------------------------------------------------------------    -------------------
 
@@ -3076,11 +3075,11 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[2]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[3]/R
@@ -3088,7 +3087,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll rise@25.000ns - clk_out1_sys_pll_1 rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -3116,9 +3115,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/R
   -------------------------------------------------------------------    -------------------
 
@@ -3139,24 +3138,24 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[3]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.602ns  (required time - arrival time)
-  Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
+Slack (MET) :             22.718ns  (required time - arrival time)
+  Source:                 i2c_baud_rate_generator/counterTick_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[4]/R
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             clk_out1_sys_pll
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll rise@25.000ns - clk_out1_sys_pll_1 rise@0.000ns)
-  Data Path Delay:        1.882ns  (logic 0.580ns (30.822%)  route 1.302ns (69.178%))
+  Data Path Delay:        1.742ns  (logic 0.580ns (33.297%)  route 1.162ns (66.703%))
   Logic Levels:           1  (LUT6=1)
-  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+  Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.549ns = ( 23.451 - 25.000 ) 
-    Source Clock Delay      (SCD):    -0.946ns
-    Clock Pessimism Removal (CPR):    0.604ns
+    Source Clock Delay      (SCD):    -0.947ns
+    Clock Pessimism Removal (CPR):    0.579ns
   Clock Uncertainty:      0.087ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.159ns
@@ -3175,13 +3174,13 @@ Slack (MET) :             22.602ns  (required time - arrival time)
                                                      -6.961    -4.269 r  clock_40mhz/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           1.661    -2.608    clock_40mhz/inst/clk_out1_sys_pll
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096    -2.512 r  clock_40mhz/inst/clkout1_buf/O
-                         net (fo=6, routed)           1.566    -0.946    i2c_baud_rate_generator/clk_out1
-    SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
+                         net (fo=6, routed)           1.565    -0.947    i2c_baud_rate_generator/clk_out1
+    SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.480     0.936    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+    SLICE_X36Y46         FDRE (Prop_fdre_C_Q)         0.456    -0.491 r  i2c_baud_rate_generator/counterTick_reg[3]/Q
+                         net (fo=3, routed)           0.682     0.192    i2c_baud_rate_generator/counterTick_reg[3]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I4_O)        0.124     0.316 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.480     0.795    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/R
   -------------------------------------------------------------------    -------------------
 
@@ -3197,14 +3196,14 @@ Slack (MET) :             22.602ns  (required time - arrival time)
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    22.005 r  clock_40mhz/inst/clkout1_buf/O
                          net (fo=6, routed)           1.446    23.451    i2c_baud_rate_generator/clk_out1
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
-                         clock pessimism              0.604    24.054    
-                         clock uncertainty           -0.087    23.967    
-    SLICE_X36Y47         FDRE (Setup_fdre_C_R)       -0.429    23.538    i2c_baud_rate_generator/counterTick_reg[4]
+                         clock pessimism              0.579    24.029    
+                         clock uncertainty           -0.087    23.942    
+    SLICE_X36Y47         FDRE (Setup_fdre_C_R)       -0.429    23.513    i2c_baud_rate_generator/counterTick_reg[4]
   -------------------------------------------------------------------
-                         required time                         23.538    
-                         arrival time                          -0.936    
+                         required time                         23.513    
+                         arrival time                          -0.795    
   -------------------------------------------------------------------
-                         slack                                 22.602    
+                         slack                                 22.718    
 
 Slack (MET) :             22.920ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[3]/C
@@ -4185,14 +4184,14 @@ Slack (MET) :             0.404ns  (arrival time - required time)
 From Clock:  clk_out1_sys_pll
   To Clock:  clk_out1_sys_pll_1
 
-Setup :            0  Failing Endpoints,  Worst Slack       22.441ns,  Total Violation        0.000ns
+Setup :            0  Failing Endpoints,  Worst Slack       22.599ns,  Total Violation        0.000ns
 Hold  :            0  Failing Endpoints,  Worst Slack        0.164ns,  Total Violation        0.000ns
 ---------------------------------------------------------------------------------------------------
 
 
 Max Delay Paths
 --------------------------------------------------------------------------------------
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[0]/R
@@ -4200,7 +4199,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll_1
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll_1 rise@25.000ns - clk_out1_sys_pll rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -4228,9 +4227,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[0]/R
   -------------------------------------------------------------------    -------------------
 
@@ -4251,11 +4250,11 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[0]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[1]/R
@@ -4263,7 +4262,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll_1
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll_1 rise@25.000ns - clk_out1_sys_pll rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -4291,9 +4290,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
@@ -4314,11 +4313,11 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[1]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[2]/R
@@ -4326,7 +4325,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll_1
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll_1 rise@25.000ns - clk_out1_sys_pll rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -4354,9 +4353,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[2]/R
   -------------------------------------------------------------------    -------------------
 
@@ -4377,11 +4376,11 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[2]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.441ns  (required time - arrival time)
+Slack (MET) :             22.599ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[3]/R
@@ -4389,7 +4388,7 @@ Slack (MET) :             22.441ns  (required time - arrival time)
   Path Group:             clk_out1_sys_pll_1
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll_1 rise@25.000ns - clk_out1_sys_pll rise@0.000ns)
-  Data Path Delay:        2.017ns  (logic 0.580ns (28.756%)  route 1.437ns (71.244%))
+  Data Path Delay:        1.859ns  (logic 0.580ns (31.200%)  route 1.279ns (68.800%))
   Logic Levels:           1  (LUT6=1)
   Clock Path Skew:        -0.026ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns = ( 23.450 - 25.000 ) 
@@ -4417,9 +4416,9 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
   -------------------------------------------------------------------    -------------------
     SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     1.071    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=3, routed)           0.664     0.174    i2c_baud_rate_generator/counterTick_reg[4]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.298 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     0.913    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/R
   -------------------------------------------------------------------    -------------------
 
@@ -4440,24 +4439,24 @@ Slack (MET) :             22.441ns  (required time - arrival time)
     SLICE_X36Y46         FDRE (Setup_fdre_C_R)       -0.429    23.512    i2c_baud_rate_generator/counterTick_reg[3]
   -------------------------------------------------------------------
                          required time                         23.512    
-                         arrival time                          -1.071    
+                         arrival time                          -0.913    
   -------------------------------------------------------------------
-                         slack                                 22.441    
+                         slack                                 22.599    
 
-Slack (MET) :             22.602ns  (required time - arrival time)
-  Source:                 i2c_baud_rate_generator/counterTick_reg[4]/C
+Slack (MET) :             22.718ns  (required time - arrival time)
+  Source:                 i2c_baud_rate_generator/counterTick_reg[3]/C
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Destination:            i2c_baud_rate_generator/counterTick_reg[4]/R
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             clk_out1_sys_pll_1
   Path Type:              Setup (Max at Slow Process Corner)
   Requirement:            25.000ns  (clk_out1_sys_pll_1 rise@25.000ns - clk_out1_sys_pll rise@0.000ns)
-  Data Path Delay:        1.882ns  (logic 0.580ns (30.822%)  route 1.302ns (69.178%))
+  Data Path Delay:        1.742ns  (logic 0.580ns (33.297%)  route 1.162ns (66.703%))
   Logic Levels:           1  (LUT6=1)
-  Clock Path Skew:        0.000ns (DCD - SCD + CPR)
+  Clock Path Skew:        -0.024ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.549ns = ( 23.451 - 25.000 ) 
-    Source Clock Delay      (SCD):    -0.946ns
-    Clock Pessimism Removal (CPR):    0.604ns
+    Source Clock Delay      (SCD):    -0.947ns
+    Clock Pessimism Removal (CPR):    0.579ns
   Clock Uncertainty:      0.087ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
     Total System Jitter     (TSJ):    0.071ns
     Discrete Jitter          (DJ):    0.159ns
@@ -4476,13 +4475,13 @@ Slack (MET) :             22.602ns  (required time - arrival time)
                                                      -6.961    -4.269 r  clock_40mhz/inst/mmcm_adv_inst/CLKOUT0
                          net (fo=1, routed)           1.661    -2.608    clock_40mhz/inst/clk_out1_sys_pll
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.096    -2.512 r  clock_40mhz/inst/clkout1_buf/O
-                         net (fo=6, routed)           1.566    -0.946    i2c_baud_rate_generator/clk_out1
-    SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
+                         net (fo=6, routed)           1.565    -0.947    i2c_baud_rate_generator/clk_out1
+    SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/C
   -------------------------------------------------------------------    -------------------
-    SLICE_X36Y47         FDRE (Prop_fdre_C_Q)         0.456    -0.490 r  i2c_baud_rate_generator/counterTick_reg[4]/Q
-                         net (fo=3, routed)           0.822     0.332    i2c_baud_rate_generator/counterTick_reg[4]
-    SLICE_X37Y46         LUT6 (Prop_lut6_I3_O)        0.124     0.456 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.480     0.936    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+    SLICE_X36Y46         FDRE (Prop_fdre_C_Q)         0.456    -0.491 r  i2c_baud_rate_generator/counterTick_reg[3]/Q
+                         net (fo=3, routed)           0.682     0.192    i2c_baud_rate_generator/counterTick_reg[3]
+    SLICE_X37Y46         LUT6 (Prop_lut6_I4_O)        0.124     0.316 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.480     0.795    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/R
   -------------------------------------------------------------------    -------------------
 
@@ -4498,14 +4497,14 @@ Slack (MET) :             22.602ns  (required time - arrival time)
     BUFGCTRL_X0Y1        BUFG (Prop_bufg_I_O)         0.091    22.005 r  clock_40mhz/inst/clkout1_buf/O
                          net (fo=6, routed)           1.446    23.451    i2c_baud_rate_generator/clk_out1
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/C
-                         clock pessimism              0.604    24.054    
-                         clock uncertainty           -0.087    23.967    
-    SLICE_X36Y47         FDRE (Setup_fdre_C_R)       -0.429    23.538    i2c_baud_rate_generator/counterTick_reg[4]
+                         clock pessimism              0.579    24.029    
+                         clock uncertainty           -0.087    23.942    
+    SLICE_X36Y47         FDRE (Setup_fdre_C_R)       -0.429    23.513    i2c_baud_rate_generator/counterTick_reg[4]
   -------------------------------------------------------------------
-                         required time                         23.538    
-                         arrival time                          -0.936    
+                         required time                         23.513    
+                         arrival time                          -0.795    
   -------------------------------------------------------------------
-                         slack                                 22.602    
+                         slack                                 22.718    
 
 Slack (MET) :             22.920ns  (required time - arrival time)
   Source:                 i2c_baud_rate_generator/counterTick_reg[3]/C
@@ -5487,8 +5486,8 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay           114 Endpoints
-Min Delay           114 Endpoints
+Max Delay           197 Endpoints
+Min Delay           197 Endpoints
 --------------------------------------------------------------------------------------
 
 
@@ -5501,18 +5500,38 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        8.225ns  (logic 3.991ns (48.527%)  route 4.234ns (51.473%))
+  Data Path Delay:        9.280ns  (logic 3.991ns (43.009%)  route 5.289ns (56.991%))
   Logic Levels:           2  (FDRE=1 OBUFT=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X29Y82         FDRE                         0.000     0.000 r  my_I2C_Core/i2c_sda_out_en_reg/C
-    SLICE_X29Y82         FDRE (Prop_fdre_C_Q)         0.456     0.456 f  my_I2C_Core/i2c_sda_out_en_reg/Q
-                         net (fo=2, routed)           4.234     4.690    sda_TRI
+    SLICE_X3Y48          FDRE                         0.000     0.000 r  my_I2C_Core/i2c_sda_out_en_reg/C
+    SLICE_X3Y48          FDRE (Prop_fdre_C_Q)         0.456     0.456 f  my_I2C_Core/i2c_sda_out_en_reg/Q
+                         net (fo=2, routed)           5.289     5.745    sda_IOBUF_inst/T
     A14                  OBUFT (TriStatE_obuft_T_O)
-                                                      3.535     8.225 r  sda_OBUFT_inst/O
-                         net (fo=0)                   0.000     8.225    sda
+                                                      3.535     9.280 r  sda_IOBUF_inst/OBUFT/O
+                         net (fo=1, unset)            0.000     9.280    sda
     A14                                                               r  sda (INOUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/i2c_sda_read_bit_now_reg[15]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            temp_low_byte[15]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.628ns  (logic 3.977ns (46.098%)  route 4.651ns (53.902%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y43          FDRE                         0.000     0.000 r  my_I2C_Core/i2c_sda_read_bit_now_reg[15]/C
+    SLICE_X0Y43          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  my_I2C_Core/i2c_sda_read_bit_now_reg[15]/Q
+                         net (fo=2, routed)           4.651     5.107    test_port_OBUF
+    L1                   OBUF (Prop_obuf_I_O)         3.521     8.628 r  temp_low_byte_OBUF[15]_inst/O
+                         net (fo=0)                   0.000     8.628    temp_low_byte[15]
+    L1                                                                r  temp_low_byte[15] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -5522,17 +5541,137 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.754ns  (logic 3.981ns (51.337%)  route 3.773ns (48.663%))
+  Data Path Delay:        8.511ns  (logic 3.981ns (46.769%)  route 4.531ns (53.231%))
   Logic Levels:           2  (FDRE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X32Y81         FDRE                         0.000     0.000 r  my_I2C_Core/i2c_transaction_complete_now_reg/C
-    SLICE_X32Y81         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  my_I2C_Core/i2c_transaction_complete_now_reg/Q
-                         net (fo=1, routed)           3.773     4.229    i2c_transaction_complete_OBUF
-    B15                  OBUF (Prop_obuf_I_O)         3.525     7.754 r  i2c_transaction_complete_OBUF_inst/O
-                         net (fo=0)                   0.000     7.754    i2c_transaction_complete
+    SLICE_X3Y49          FDRE                         0.000     0.000 r  my_I2C_Core/i2c_transaction_complete_now_reg/C
+    SLICE_X3Y49          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  my_I2C_Core/i2c_transaction_complete_now_reg/Q
+                         net (fo=1, routed)           4.531     4.987    i2c_transaction_complete_OBUF
+    B15                  OBUF (Prop_obuf_I_O)         3.525     8.511 r  i2c_transaction_complete_OBUF_inst/O
+                         net (fo=0)                   0.000     8.511    i2c_transaction_complete
     B15                                                               r  i2c_transaction_complete (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/i2c_sda_read_bit_now_reg[13]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            temp_low_byte[13]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.266ns  (logic 4.025ns (48.699%)  route 4.240ns (51.301%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y46          FDRE                         0.000     0.000 r  my_I2C_Core/i2c_sda_read_bit_now_reg[13]/C
+    SLICE_X2Y46          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  my_I2C_Core/i2c_sda_read_bit_now_reg[13]/Q
+                         net (fo=1, routed)           4.240     4.758    temp_low_byte_OBUF[13]
+    N3                   OBUF (Prop_obuf_I_O)         3.507     8.266 r  temp_low_byte_OBUF[13]_inst/O
+                         net (fo=0)                   0.000     8.266    temp_low_byte[13]
+    N3                                                                r  temp_low_byte[13] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/i2c_sda_read_bit_now_reg[12]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            temp_low_byte[12]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        8.089ns  (logic 3.974ns (49.130%)  route 4.115ns (50.870%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y47          FDRE                         0.000     0.000 r  my_I2C_Core/i2c_sda_read_bit_now_reg[12]/C
+    SLICE_X0Y47          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  my_I2C_Core/i2c_sda_read_bit_now_reg[12]/Q
+                         net (fo=1, routed)           4.115     4.571    temp_low_byte_OBUF[12]
+    P3                   OBUF (Prop_obuf_I_O)         3.518     8.089 r  temp_low_byte_OBUF[12]_inst/O
+                         net (fo=0)                   0.000     8.089    temp_low_byte[12]
+    P3                                                                r  temp_low_byte[12] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/i2c_sda_read_bit_now_reg[14]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            temp_low_byte[14]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.861ns  (logic 3.971ns (50.521%)  route 3.890ns (49.479%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y47          FDRE                         0.000     0.000 r  my_I2C_Core/i2c_sda_read_bit_now_reg[14]/C
+    SLICE_X3Y47          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  my_I2C_Core/i2c_sda_read_bit_now_reg[14]/Q
+                         net (fo=1, routed)           3.890     4.346    temp_low_byte_OBUF[14]
+    P1                   OBUF (Prop_obuf_I_O)         3.515     7.861 r  temp_low_byte_OBUF[14]_inst/O
+                         net (fo=0)                   0.000     7.861    temp_low_byte[14]
+    P1                                                                r  temp_low_byte[14] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/i2c_sda_read_bit_now_reg[11]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            temp_low_byte[11]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.825ns  (logic 3.960ns (50.602%)  route 3.865ns (49.398%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y43          FDRE                         0.000     0.000 r  my_I2C_Core/i2c_sda_read_bit_now_reg[11]/C
+    SLICE_X3Y43          FDRE (Prop_fdre_C_Q)         0.456     0.456 r  my_I2C_Core/i2c_sda_read_bit_now_reg[11]/Q
+                         net (fo=1, routed)           3.865     4.321    temp_low_byte_OBUF[11]
+    U3                   OBUF (Prop_obuf_I_O)         3.504     7.825 r  temp_low_byte_OBUF[11]_inst/O
+                         net (fo=0)                   0.000     7.825    temp_low_byte[11]
+    U3                                                                r  temp_low_byte[11] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/i2c_sda_read_bit_now_reg[10]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            temp_low_byte[10]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.668ns  (logic 4.043ns (52.732%)  route 3.624ns (47.268%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y41          FDRE                         0.000     0.000 r  my_I2C_Core/i2c_sda_read_bit_now_reg[10]/C
+    SLICE_X2Y41          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  my_I2C_Core/i2c_sda_read_bit_now_reg[10]/Q
+                         net (fo=1, routed)           3.624     4.142    temp_low_byte_OBUF[10]
+    W3                   OBUF (Prop_obuf_I_O)         3.525     7.668 r  temp_low_byte_OBUF[10]_inst/O
+                         net (fo=0)                   0.000     7.668    temp_low_byte[10]
+    W3                                                                r  temp_low_byte[10] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/i2c_sda_read_bit_now_reg[9]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            temp_low_byte[9]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.651ns  (logic 4.026ns (52.626%)  route 3.624ns (47.374%))
+  Logic Levels:           2  (FDRE=1 OBUF=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y42          FDRE                         0.000     0.000 r  my_I2C_Core/i2c_sda_read_bit_now_reg[9]/C
+    SLICE_X2Y42          FDRE (Prop_fdre_C_Q)         0.518     0.518 r  my_I2C_Core/i2c_sda_read_bit_now_reg[9]/Q
+                         net (fo=1, routed)           3.624     4.142    temp_low_byte_OBUF[9]
+    V3                   OBUF (Prop_obuf_I_O)         3.508     7.651 r  temp_low_byte_OBUF[9]_inst/O
+                         net (fo=0)                   0.000     7.651    temp_low_byte[9]
+    V3                                                                r  temp_low_byte[9] (OUT)
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -5542,157 +5681,17 @@ Slack:                    inf
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        7.688ns  (logic 3.968ns (51.609%)  route 3.720ns (48.391%))
+  Data Path Delay:        7.594ns  (logic 4.030ns (53.068%)  route 3.564ns (46.932%))
   Logic Levels:           2  (FDSE=1 OBUF=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X28Y81         FDSE                         0.000     0.000 r  my_I2C_Core/i2c_sclk_reg_now_reg/C
-    SLICE_X28Y81         FDSE (Prop_fdse_C_Q)         0.456     0.456 r  my_I2C_Core/i2c_sclk_reg_now_reg/Q
-                         net (fo=1, routed)           3.720     4.176    sclk_OBUF
-    A16                  OBUF (Prop_obuf_I_O)         3.512     7.688 r  sclk_OBUF_inst/O
-                         net (fo=0)                   0.000     7.688    sclk
+    SLICE_X2Y50          FDSE                         0.000     0.000 r  my_I2C_Core/i2c_sclk_reg_now_reg/C
+    SLICE_X2Y50          FDSE (Prop_fdse_C_Q)         0.518     0.518 r  my_I2C_Core/i2c_sclk_reg_now_reg/Q
+                         net (fo=1, routed)           3.564     4.082    sclk_OBUF
+    A16                  OBUF (Prop_obuf_I_O)         3.512     7.594 r  sclk_OBUF_inst/O
+                         net (fo=0)                   0.000     7.594    sclk
     A16                                                               r  sclk (OUT)
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 reset_n
-                            (input port)
-  Destination:            my_I2C_Core/FSM_sequential_stateNow_reg[3]/R
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.968ns  (logic 1.585ns (22.750%)  route 5.383ns (77.250%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    V16                                               0.000     0.000 f  reset_n (IN)
-                         net (fo=0)                   0.000     0.000    reset_n
-    V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.967     5.428    my_I2C_Core/reset_n_IBUF
-    SLICE_X32Y78         LUT1 (Prop_lut1_I0_O)        0.124     5.552 r  my_I2C_Core/FSM_sequential_stateNow[3]_i_1/O
-                         net (fo=36, routed)          1.417     6.968    my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0
-    SLICE_X29Y80         FDRE                                         r  my_I2C_Core/FSM_sequential_stateNow_reg[3]/R
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 reset_n
-                            (input port)
-  Destination:            my_I2C_Core/dataBit_now_reg[1]/R
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.965ns  (logic 1.585ns (22.761%)  route 5.380ns (77.239%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    V16                                               0.000     0.000 f  reset_n (IN)
-                         net (fo=0)                   0.000     0.000    reset_n
-    V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.967     5.428    my_I2C_Core/reset_n_IBUF
-    SLICE_X32Y78         LUT1 (Prop_lut1_I0_O)        0.124     5.552 r  my_I2C_Core/FSM_sequential_stateNow[3]_i_1/O
-                         net (fo=36, routed)          1.413     6.965    my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0
-    SLICE_X30Y81         FDRE                                         r  my_I2C_Core/dataBit_now_reg[1]/R
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 reset_n
-                            (input port)
-  Destination:            my_I2C_Core/dataBit_now_reg[2]/R
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.965ns  (logic 1.585ns (22.761%)  route 5.380ns (77.239%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    V16                                               0.000     0.000 f  reset_n (IN)
-                         net (fo=0)                   0.000     0.000    reset_n
-    V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.967     5.428    my_I2C_Core/reset_n_IBUF
-    SLICE_X32Y78         LUT1 (Prop_lut1_I0_O)        0.124     5.552 r  my_I2C_Core/FSM_sequential_stateNow[3]_i_1/O
-                         net (fo=36, routed)          1.413     6.965    my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0
-    SLICE_X30Y81         FDRE                                         r  my_I2C_Core/dataBit_now_reg[2]/R
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 reset_n
-                            (input port)
-  Destination:            my_I2C_Core/i2c_sclk_reg_now_reg/S
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.949ns  (logic 1.585ns (22.814%)  route 5.364ns (77.186%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    V16                                               0.000     0.000 f  reset_n (IN)
-                         net (fo=0)                   0.000     0.000    reset_n
-    V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.967     5.428    my_I2C_Core/reset_n_IBUF
-    SLICE_X32Y78         LUT1 (Prop_lut1_I0_O)        0.124     5.552 r  my_I2C_Core/FSM_sequential_stateNow[3]_i_1/O
-                         net (fo=36, routed)          1.397     6.949    my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0
-    SLICE_X28Y81         FDSE                                         r  my_I2C_Core/i2c_sclk_reg_now_reg/S
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 reset_n
-                            (input port)
-  Destination:            my_I2C_Core/FSM_sequential_stateNow_reg[2]/R
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.945ns  (logic 1.585ns (22.828%)  route 5.359ns (77.172%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    V16                                               0.000     0.000 f  reset_n (IN)
-                         net (fo=0)                   0.000     0.000    reset_n
-    V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.967     5.428    my_I2C_Core/reset_n_IBUF
-    SLICE_X32Y78         LUT1 (Prop_lut1_I0_O)        0.124     5.552 r  my_I2C_Core/FSM_sequential_stateNow[3]_i_1/O
-                         net (fo=36, routed)          1.393     6.945    my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0
-    SLICE_X29Y81         FDRE                                         r  my_I2C_Core/FSM_sequential_stateNow_reg[2]/R
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 reset_n
-                            (input port)
-  Destination:            my_I2C_Core/dataByte_now_reg[0]/R
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.782ns  (logic 1.585ns (23.374%)  route 5.197ns (76.626%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    V16                                               0.000     0.000 f  reset_n (IN)
-                         net (fo=0)                   0.000     0.000    reset_n
-    V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.967     5.428    my_I2C_Core/reset_n_IBUF
-    SLICE_X32Y78         LUT1 (Prop_lut1_I0_O)        0.124     5.552 r  my_I2C_Core/FSM_sequential_stateNow[3]_i_1/O
-                         net (fo=36, routed)          1.231     6.782    my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0
-    SLICE_X32Y83         FDRE                                         r  my_I2C_Core/dataByte_now_reg[0]/R
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 reset_n
-                            (input port)
-  Destination:            my_I2C_Core/dataByte_now_reg[4]/R
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.782ns  (logic 1.585ns (23.374%)  route 5.197ns (76.626%))
-  Logic Levels:           2  (IBUF=1 LUT1=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    V16                                               0.000     0.000 f  reset_n (IN)
-                         net (fo=0)                   0.000     0.000    reset_n
-    V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.967     5.428    my_I2C_Core/reset_n_IBUF
-    SLICE_X32Y78         LUT1 (Prop_lut1_I0_O)        0.124     5.552 r  my_I2C_Core/FSM_sequential_stateNow[3]_i_1/O
-                         net (fo=36, routed)          1.231     6.782    my_I2C_Core/FSM_sequential_stateNow[3]_i_1_n_0
-    SLICE_X32Y83         FDRE                                         r  my_I2C_Core/dataByte_now_reg[4]/R
   -------------------------------------------------------------------    -------------------
 
 
@@ -5702,172 +5701,117 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 my_I2C_Core/FSM_sequential_stateNow_reg[2]/C
+  Source:                 my_I2C_Core/dataByte_now_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            my_I2C_Core/i2c_sclk_reg_now_reg/D
+  Destination:            my_I2C_Core/dataByte_now_reg[3]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.322ns  (logic 0.189ns (58.635%)  route 0.133ns (41.365%))
-  Logic Levels:           2  (FDRE=1 LUT4=1)
+  Data Path Delay:        0.324ns  (logic 0.186ns (57.339%)  route 0.138ns (42.661%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X29Y81         FDRE                         0.000     0.000 r  my_I2C_Core/FSM_sequential_stateNow_reg[2]/C
-    SLICE_X29Y81         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_I2C_Core/FSM_sequential_stateNow_reg[2]/Q
-                         net (fo=24, routed)          0.133     0.274    my_I2C_Core/stateNow[2]
-    SLICE_X28Y81         LUT4 (Prop_lut4_I0_O)        0.048     0.322 r  my_I2C_Core/i2c_sclk_reg_now_i_1/O
-                         net (fo=1, routed)           0.000     0.322    my_I2C_Core/i2c_sclk_reg_next
-    SLICE_X28Y81         FDSE                                         r  my_I2C_Core/i2c_sclk_reg_now_reg/D
+    SLICE_X5Y48          FDRE                         0.000     0.000 r  my_I2C_Core/dataByte_now_reg[0]/C
+    SLICE_X5Y48          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_I2C_Core/dataByte_now_reg[0]/Q
+                         net (fo=6, routed)           0.138     0.279    my_I2C_Core/dataByte_now[0]
+    SLICE_X6Y48          LUT6 (Prop_lut6_I1_O)        0.045     0.324 r  my_I2C_Core/dataByte_now[3]_i_1/O
+                         net (fo=1, routed)           0.000     0.324    my_I2C_Core/dataByte_next[3]
+    SLICE_X6Y48          FDRE                                         r  my_I2C_Core/dataByte_now_reg[3]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/readBitCount_now_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            my_I2C_Core/readBitCount_now_reg[4]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.343ns  (logic 0.186ns (54.163%)  route 0.157ns (45.837%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y46          FDRE                         0.000     0.000 r  my_I2C_Core/readBitCount_now_reg[1]/C
+    SLICE_X1Y46          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_I2C_Core/readBitCount_now_reg[1]/Q
+                         net (fo=21, routed)          0.157     0.298    my_I2C_Core/readBitCount_now[1]
+    SLICE_X1Y46          LUT6 (Prop_lut6_I1_O)        0.045     0.343 r  my_I2C_Core/readBitCount_now[4]_i_1/O
+                         net (fo=1, routed)           0.000     0.343    my_I2C_Core/readBitCount_next[4]
+    SLICE_X1Y46          FDRE                                         r  my_I2C_Core/readBitCount_now_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 my_I2C_Core/dataByte_now_reg[2]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            my_I2C_Core/dataByte_now_reg[3]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.323ns  (logic 0.227ns (70.198%)  route 0.096ns (29.802%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X33Y83         FDRE                         0.000     0.000 r  my_I2C_Core/dataByte_now_reg[2]/C
-    SLICE_X33Y83         FDRE (Prop_fdre_C_Q)         0.128     0.128 r  my_I2C_Core/dataByte_now_reg[2]/Q
-                         net (fo=5, routed)           0.096     0.224    my_I2C_Core/dataByte_now[2]
-    SLICE_X33Y83         LUT6 (Prop_lut6_I4_O)        0.099     0.323 r  my_I2C_Core/dataByte_now[3]_i_1/O
-                         net (fo=1, routed)           0.000     0.323    my_I2C_Core/dataByte_next[3]
-    SLICE_X33Y83         FDRE                                         r  my_I2C_Core/dataByte_now_reg[3]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 my_I2C_Core/dataByte_now_reg[1]/C
-                            (rising edge-triggered cell FDRE)
   Destination:            my_I2C_Core/dataByte_now_reg[4]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.328ns  (logic 0.186ns (56.658%)  route 0.142ns (43.342%))
+  Data Path Delay:        0.347ns  (logic 0.246ns (70.822%)  route 0.101ns (29.178%))
   Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X33Y83         FDRE                         0.000     0.000 r  my_I2C_Core/dataByte_now_reg[1]/C
-    SLICE_X33Y83         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_I2C_Core/dataByte_now_reg[1]/Q
-                         net (fo=6, routed)           0.142     0.283    my_I2C_Core/dataByte_now[1]
-    SLICE_X32Y83         LUT6 (Prop_lut6_I3_O)        0.045     0.328 r  my_I2C_Core/dataByte_now[4]_i_2/O
-                         net (fo=1, routed)           0.000     0.328    my_I2C_Core/dataByte_next[4]
-    SLICE_X32Y83         FDRE                                         r  my_I2C_Core/dataByte_now_reg[4]/D
+    SLICE_X6Y48          FDRE                         0.000     0.000 r  my_I2C_Core/dataByte_now_reg[2]/C
+    SLICE_X6Y48          FDRE (Prop_fdre_C_Q)         0.148     0.148 r  my_I2C_Core/dataByte_now_reg[2]/Q
+                         net (fo=4, routed)           0.101     0.249    my_I2C_Core/dataByte_now[2]
+    SLICE_X6Y48          LUT6 (Prop_lut6_I0_O)        0.098     0.347 r  my_I2C_Core/dataByte_now[4]_i_2/O
+                         net (fo=1, routed)           0.000     0.347    my_I2C_Core/dataByte_next[4]
+    SLICE_X6Y48          FDRE                                         r  my_I2C_Core/dataByte_now_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_I2C_Core/FSM_sequential_stateNow_reg[2]/C
+  Source:                 my_I2C_Core/dataBit_now_reg[4]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            my_I2C_Core/FSM_sequential_stateNow_reg[3]/D
+  Destination:            my_I2C_Core/dataBit_now_reg[4]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.361ns  (logic 0.189ns (52.411%)  route 0.172ns (47.589%))
-  Logic Levels:           2  (FDRE=1 LUT5=1)
+  Data Path Delay:        0.358ns  (logic 0.209ns (58.302%)  route 0.149ns (41.698%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X29Y81         FDRE                         0.000     0.000 r  my_I2C_Core/FSM_sequential_stateNow_reg[2]/C
-    SLICE_X29Y81         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_I2C_Core/FSM_sequential_stateNow_reg[2]/Q
-                         net (fo=24, routed)          0.172     0.313    my_I2C_Core/stateNow[2]
-    SLICE_X29Y80         LUT5 (Prop_lut5_I1_O)        0.048     0.361 r  my_I2C_Core/FSM_sequential_stateNow[3]_i_3/O
-                         net (fo=1, routed)           0.000     0.361    my_I2C_Core/FSM_sequential_stateNow[3]_i_3_n_0
-    SLICE_X29Y80         FDRE                                         r  my_I2C_Core/FSM_sequential_stateNow_reg[3]/D
+    SLICE_X2Y49          FDRE                         0.000     0.000 r  my_I2C_Core/dataBit_now_reg[4]/C
+    SLICE_X2Y49          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  my_I2C_Core/dataBit_now_reg[4]/Q
+                         net (fo=12, routed)          0.149     0.313    my_I2C_Core/dataBit_now[4]
+    SLICE_X2Y49          LUT6 (Prop_lut6_I3_O)        0.045     0.358 r  my_I2C_Core/dataBit_now[4]_i_2/O
+                         net (fo=1, routed)           0.000     0.358    my_I2C_Core/dataBit_next[4]
+    SLICE_X2Y49          FDRE                                         r  my_I2C_Core/dataBit_now_reg[4]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_I2C_Core/FSM_sequential_stateNow_reg[4]_inv/C
-                            (rising edge-triggered cell FDSE)
-  Destination:            my_I2C_Core/FSM_sequential_stateNow_reg[4]_inv/D
+  Source:                 my_I2C_Core/dataBit_now_reg[4]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            my_I2C_Core/dataBit_now_reg[3]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.362ns  (logic 0.186ns (51.336%)  route 0.176ns (48.664%))
-  Logic Levels:           2  (FDSE=1 LUT5=1)
+  Data Path Delay:        0.360ns  (logic 0.209ns (57.979%)  route 0.151ns (42.021%))
+  Logic Levels:           2  (FDRE=1 LUT6=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X33Y81         FDSE                         0.000     0.000 r  my_I2C_Core/FSM_sequential_stateNow_reg[4]_inv/C
-    SLICE_X33Y81         FDSE (Prop_fdse_C_Q)         0.141     0.141 f  my_I2C_Core/FSM_sequential_stateNow_reg[4]_inv/Q
-                         net (fo=21, routed)          0.121     0.262    my_I2C_Core/stateNow[4]
-    SLICE_X32Y81         LUT5 (Prop_lut5_I0_O)        0.045     0.307 r  my_I2C_Core/FSM_sequential_stateNow[4]_inv_i_1/O
-                         net (fo=1, routed)           0.055     0.362    my_I2C_Core/stateNext__0[4]
-    SLICE_X33Y81         FDSE                                         r  my_I2C_Core/FSM_sequential_stateNow_reg[4]_inv/D
+    SLICE_X2Y49          FDRE                         0.000     0.000 r  my_I2C_Core/dataBit_now_reg[4]/C
+    SLICE_X2Y49          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  my_I2C_Core/dataBit_now_reg[4]/Q
+                         net (fo=12, routed)          0.151     0.315    my_I2C_Core/dataBit_now[4]
+    SLICE_X2Y49          LUT6 (Prop_lut6_I5_O)        0.045     0.360 r  my_I2C_Core/dataBit_now[3]_i_1/O
+                         net (fo=1, routed)           0.000     0.360    my_I2C_Core/dataBit_next[3]
+    SLICE_X2Y49          FDRE                                         r  my_I2C_Core/dataBit_now_reg[3]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 my_I2C_Core/dataByte_now_reg[0]/C
+  Source:                 my_I2C_Core/delayCountNow_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            my_I2C_Core/dataByte_now_reg[0]/D
+  Destination:            my_I2C_Core/delayCountNow_reg[0]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
   Data Path Delay:        0.371ns  (logic 0.186ns (50.171%)  route 0.185ns (49.829%))
-  Logic Levels:           2  (FDRE=1 LUT3=1)
+  Logic Levels:           2  (FDRE=1 LUT1=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X32Y83         FDRE                         0.000     0.000 r  my_I2C_Core/dataByte_now_reg[0]/C
-    SLICE_X32Y83         FDRE (Prop_fdre_C_Q)         0.141     0.141 f  my_I2C_Core/dataByte_now_reg[0]/Q
-                         net (fo=7, routed)           0.185     0.326    my_I2C_Core/dataByte_now[0]
-    SLICE_X32Y83         LUT3 (Prop_lut3_I2_O)        0.045     0.371 r  my_I2C_Core/dataByte_now[0]_i_1/O
-                         net (fo=1, routed)           0.000     0.371    my_I2C_Core/dataByte_next[0]
-    SLICE_X32Y83         FDRE                                         r  my_I2C_Core/dataByte_now_reg[0]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 my_I2C_Core/read_write_reg_reg/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            my_I2C_Core/read_write_reg_reg/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.371ns  (logic 0.186ns (50.171%)  route 0.185ns (49.829%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X32Y80         FDRE                         0.000     0.000 r  my_I2C_Core/read_write_reg_reg/C
-    SLICE_X32Y80         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_I2C_Core/read_write_reg_reg/Q
-                         net (fo=13, routed)          0.185     0.326    my_I2C_Core/read_write_reg
-    SLICE_X32Y80         LUT6 (Prop_lut6_I0_O)        0.045     0.371 r  my_I2C_Core/read_write_reg_i_1/O
-                         net (fo=1, routed)           0.000     0.371    my_I2C_Core/read_write_reg_i_1_n_0
-    SLICE_X32Y80         FDRE                                         r  my_I2C_Core/read_write_reg_reg/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 my_I2C_Core/FSM_sequential_stateNow_reg[4]_inv/C
-                            (rising edge-triggered cell FDSE)
-  Destination:            my_I2C_Core/i2c_sclk_reg_now_reg/CE
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.372ns  (logic 0.141ns (37.887%)  route 0.231ns (62.113%))
-  Logic Levels:           1  (FDSE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X33Y81         FDSE                         0.000     0.000 r  my_I2C_Core/FSM_sequential_stateNow_reg[4]_inv/C
-    SLICE_X33Y81         FDSE (Prop_fdse_C_Q)         0.141     0.141 r  my_I2C_Core/FSM_sequential_stateNow_reg[4]_inv/Q
-                         net (fo=21, routed)          0.231     0.372    my_I2C_Core/stateNow[4]
-    SLICE_X28Y81         FDSE                                         r  my_I2C_Core/i2c_sclk_reg_now_reg/CE
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 my_I2C_Core/FSM_sequential_stateNow_reg[0]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            my_I2C_Core/FSM_sequential_stateNow_reg[0]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.377ns  (logic 0.186ns (49.401%)  route 0.191ns (50.599%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X33Y80         FDRE                         0.000     0.000 r  my_I2C_Core/FSM_sequential_stateNow_reg[0]/C
-    SLICE_X33Y80         FDRE (Prop_fdre_C_Q)         0.141     0.141 f  my_I2C_Core/FSM_sequential_stateNow_reg[0]/Q
-                         net (fo=22, routed)          0.191     0.332    my_I2C_Core/stateNow[0]
-    SLICE_X33Y80         LUT6 (Prop_lut6_I0_O)        0.045     0.377 r  my_I2C_Core/FSM_sequential_stateNow[0]_i_1/O
-                         net (fo=1, routed)           0.000     0.377    my_I2C_Core/stateNext__0[0]
-    SLICE_X33Y80         FDRE                                         r  my_I2C_Core/FSM_sequential_stateNow_reg[0]/D
+    SLICE_X4Y45          FDRE                         0.000     0.000 r  my_I2C_Core/delayCountNow_reg[0]/C
+    SLICE_X4Y45          FDRE (Prop_fdre_C_Q)         0.141     0.141 f  my_I2C_Core/delayCountNow_reg[0]/Q
+                         net (fo=3, routed)           0.185     0.326    my_I2C_Core/delayCountNow[0]
+    SLICE_X4Y45          LUT1 (Prop_lut1_I0_O)        0.045     0.371 r  my_I2C_Core/delayCountNow[0]_i_1/O
+                         net (fo=1, routed)           0.000     0.371    my_I2C_Core/delayCountNow[0]_i_1_n_0
+    SLICE_X4Y45          FDRE                                         r  my_I2C_Core/delayCountNow_reg[0]/D
   -------------------------------------------------------------------    -------------------
 
 Slack:                    inf
@@ -5876,17 +5820,74 @@ Slack:                    inf
   Destination:            my_I2C_Core/dataBit_now_reg[2]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.382ns  (logic 0.207ns (54.155%)  route 0.175ns (45.845%))
+  Data Path Delay:        0.380ns  (logic 0.183ns (48.175%)  route 0.197ns (51.825%))
   Logic Levels:           2  (FDRE=1 LUT4=1)
 
     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
   -------------------------------------------------------------------    -------------------
-    SLICE_X30Y81         FDRE                         0.000     0.000 r  my_I2C_Core/dataBit_now_reg[1]/C
-    SLICE_X30Y81         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  my_I2C_Core/dataBit_now_reg[1]/Q
-                         net (fo=8, routed)           0.175     0.339    my_I2C_Core/dataBit_now[1]
-    SLICE_X30Y81         LUT4 (Prop_lut4_I2_O)        0.043     0.382 r  my_I2C_Core/dataBit_now[2]_i_1/O
-                         net (fo=1, routed)           0.000     0.382    my_I2C_Core/dataBit_next[2]
-    SLICE_X30Y81         FDRE                                         r  my_I2C_Core/dataBit_now_reg[2]/D
+    SLICE_X4Y49          FDRE                         0.000     0.000 r  my_I2C_Core/dataBit_now_reg[1]/C
+    SLICE_X4Y49          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_I2C_Core/dataBit_now_reg[1]/Q
+                         net (fo=9, routed)           0.197     0.338    my_I2C_Core/dataBit_now[1]
+    SLICE_X4Y49          LUT4 (Prop_lut4_I1_O)        0.042     0.380 r  my_I2C_Core/dataBit_now[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.380    my_I2C_Core/dataBit_next[2]
+    SLICE_X4Y49          FDRE                                         r  my_I2C_Core/dataBit_now_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/dataBit_now_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            my_I2C_Core/dataBit_now_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.383ns  (logic 0.186ns (48.581%)  route 0.197ns (51.419%))
+  Logic Levels:           2  (FDRE=1 LUT3=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X4Y49          FDRE                         0.000     0.000 r  my_I2C_Core/dataBit_now_reg[1]/C
+    SLICE_X4Y49          FDRE (Prop_fdre_C_Q)         0.141     0.141 r  my_I2C_Core/dataBit_now_reg[1]/Q
+                         net (fo=9, routed)           0.197     0.338    my_I2C_Core/dataBit_now[1]
+    SLICE_X4Y49          LUT3 (Prop_lut3_I2_O)        0.045     0.383 r  my_I2C_Core/dataBit_now[1]_i_1/O
+                         net (fo=1, routed)           0.000     0.383    my_I2C_Core/dataBit_next[1]
+    SLICE_X4Y49          FDRE                                         r  my_I2C_Core/dataBit_now_reg[1]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/dataByte_now_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            my_I2C_Core/dataByte_now_reg[2]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.392ns  (logic 0.207ns (52.792%)  route 0.185ns (47.208%))
+  Logic Levels:           2  (FDRE=1 LUT5=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y48          FDRE                         0.000     0.000 r  my_I2C_Core/dataByte_now_reg[1]/C
+    SLICE_X6Y48          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  my_I2C_Core/dataByte_now_reg[1]/Q
+                         net (fo=5, routed)           0.185     0.349    my_I2C_Core/dataByte_now[1]
+    SLICE_X6Y48          LUT5 (Prop_lut5_I1_O)        0.043     0.392 r  my_I2C_Core/dataByte_now[2]_i_1/O
+                         net (fo=1, routed)           0.000     0.392    my_I2C_Core/dataByte_next[2]
+    SLICE_X6Y48          FDRE                                         r  my_I2C_Core/dataByte_now_reg[2]/D
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 my_I2C_Core/dataByte_now_reg[1]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            my_I2C_Core/dataByte_now_reg[1]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.394ns  (logic 0.209ns (53.031%)  route 0.185ns (46.969%))
+  Logic Levels:           2  (FDRE=1 LUT4=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    SLICE_X6Y48          FDRE                         0.000     0.000 r  my_I2C_Core/dataByte_now_reg[1]/C
+    SLICE_X6Y48          FDRE (Prop_fdre_C_Q)         0.164     0.164 r  my_I2C_Core/dataByte_now_reg[1]/Q
+                         net (fo=5, routed)           0.185     0.349    my_I2C_Core/dataByte_now[1]
+    SLICE_X6Y48          LUT4 (Prop_lut4_I0_O)        0.045     0.394 r  my_I2C_Core/dataByte_now[1]_i_1/O
+                         net (fo=1, routed)           0.000     0.394    my_I2C_Core/dataByte_next[1]
+    SLICE_X6Y48          FDRE                                         r  my_I2C_Core/dataByte_now_reg[1]/D
   -------------------------------------------------------------------    -------------------
 
 
@@ -6076,7 +6077,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.279ns  (logic 1.585ns (30.032%)  route 3.693ns (69.968%))
+  Data Path Delay:        5.517ns  (logic 1.585ns (28.736%)  route 3.932ns (71.264%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -1.550ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns
@@ -6092,9 +6093,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.078     4.540    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.664 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     5.279    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           3.317     4.778    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.902 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     5.517    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[0]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6118,7 +6119,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.279ns  (logic 1.585ns (30.032%)  route 3.693ns (69.968%))
+  Data Path Delay:        5.517ns  (logic 1.585ns (28.736%)  route 3.932ns (71.264%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -1.550ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns
@@ -6134,9 +6135,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.078     4.540    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.664 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     5.279    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           3.317     4.778    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.902 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     5.517    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6160,7 +6161,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.279ns  (logic 1.585ns (30.032%)  route 3.693ns (69.968%))
+  Data Path Delay:        5.517ns  (logic 1.585ns (28.736%)  route 3.932ns (71.264%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -1.550ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns
@@ -6176,9 +6177,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.078     4.540    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.664 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     5.279    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           3.317     4.778    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.902 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     5.517    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[2]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6202,7 +6203,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.279ns  (logic 1.585ns (30.032%)  route 3.693ns (69.968%))
+  Data Path Delay:        5.517ns  (logic 1.585ns (28.736%)  route 3.932ns (71.264%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -1.550ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns
@@ -6218,9 +6219,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.078     4.540    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.664 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     5.279    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           3.317     4.778    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.902 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     5.517    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6244,7 +6245,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.144ns  (logic 1.585ns (30.822%)  route 3.558ns (69.178%))
+  Data Path Delay:        5.382ns  (logic 1.585ns (29.458%)  route 3.796ns (70.542%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -1.549ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.549ns
@@ -6260,9 +6261,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.078     4.540    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.664 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.480     5.144    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           3.317     4.778    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.902 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.480     5.382    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6286,7 +6287,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.110ns  (logic 1.709ns (33.451%)  route 3.401ns (66.549%))
+  Data Path Delay:        5.181ns  (logic 1.709ns (32.991%)  route 3.472ns (67.009%))
   Logic Levels:           3  (IBUF=1 LUT3=1 LUT6=1)
   Clock Path Skew:        -1.550ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns
@@ -6302,11 +6303,11 @@ Slack:                    inf
     V16                                               0.000     0.000 r  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 r  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.246     4.708    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I0_O)        0.124     4.832 r  i2c_baud_rate_generator/sys_tick_reg_i_2/O
-                         net (fo=1, routed)           0.154     4.986    i2c_baud_rate_generator/sys_tick_reg_i_2_n_0
-    SLICE_X37Y46         LUT3 (Prop_lut3_I2_O)        0.124     5.110 r  i2c_baud_rate_generator/sys_tick_reg_i_1/O
-                         net (fo=1, routed)           0.000     5.110    i2c_baud_rate_generator/sys_tick_reg_i_1_n_0
+                         net (fo=8, routed)           3.318     4.779    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I0_O)        0.124     4.903 r  i2c_baud_rate_generator/sys_tick_reg_i_2/O
+                         net (fo=1, routed)           0.154     5.057    i2c_baud_rate_generator/sys_tick_reg_i_2_n_0
+    SLICE_X37Y46         LUT3 (Prop_lut3_I2_O)        0.124     5.181 r  i2c_baud_rate_generator/sys_tick_reg_i_1/O
+                         net (fo=1, routed)           0.000     5.181    i2c_baud_rate_generator/sys_tick_reg_i_1_n_0
     SLICE_X37Y46         FDRE                                         r  i2c_baud_rate_generator/sys_tick_reg_reg/D
   -------------------------------------------------------------------    -------------------
 
@@ -6336,7 +6337,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.600ns  (logic 0.274ns (17.150%)  route 1.325ns (82.850%))
+  Data Path Delay:        1.641ns  (logic 0.274ns (16.720%)  route 1.367ns (83.280%))
   Logic Levels:           2  (IBUF=1 LUT3=1)
   Clock Path Skew:        -0.858ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.858ns
@@ -6348,9 +6349,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.325     1.555    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT3 (Prop_lut3_I0_O)        0.045     1.600 r  i2c_baud_rate_generator/sys_tick_reg_i_1/O
-                         net (fo=1, routed)           0.000     1.600    i2c_baud_rate_generator/sys_tick_reg_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT3 (Prop_lut3_I0_O)        0.045     1.641 r  i2c_baud_rate_generator/sys_tick_reg_i_1/O
+                         net (fo=1, routed)           0.000     1.641    i2c_baud_rate_generator/sys_tick_reg_i_1_n_0
     SLICE_X37Y46         FDRE                                         r  i2c_baud_rate_generator/sys_tick_reg_reg/D
   -------------------------------------------------------------------    -------------------
 
@@ -6374,7 +6375,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.828ns  (logic 0.274ns (15.012%)  route 1.553ns (84.988%))
+  Data Path Delay:        1.793ns  (logic 0.274ns (15.304%)  route 1.518ns (84.696%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -0.857ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.857ns
@@ -6386,9 +6387,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.401     1.631    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.676 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.152     1.828    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.641 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.152     1.793    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6412,7 +6413,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.888ns  (logic 0.274ns (14.533%)  route 1.613ns (85.467%))
+  Data Path Delay:        1.853ns  (logic 0.274ns (14.806%)  route 1.579ns (85.194%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -0.858ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.858ns
@@ -6424,9 +6425,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.401     1.631    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.676 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.212     1.888    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.641 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.212     1.853    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[0]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6450,7 +6451,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.888ns  (logic 0.274ns (14.533%)  route 1.613ns (85.467%))
+  Data Path Delay:        1.853ns  (logic 0.274ns (14.806%)  route 1.579ns (85.194%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -0.858ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.858ns
@@ -6462,9 +6463,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.401     1.631    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.676 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.212     1.888    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.641 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.212     1.853    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6488,7 +6489,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.888ns  (logic 0.274ns (14.533%)  route 1.613ns (85.467%))
+  Data Path Delay:        1.853ns  (logic 0.274ns (14.806%)  route 1.579ns (85.194%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -0.858ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.858ns
@@ -6500,9 +6501,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.401     1.631    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.676 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.212     1.888    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.641 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.212     1.853    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[2]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6526,7 +6527,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.888ns  (logic 0.274ns (14.533%)  route 1.613ns (85.467%))
+  Data Path Delay:        1.853ns  (logic 0.274ns (14.806%)  route 1.579ns (85.194%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -0.858ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.858ns
@@ -6538,9 +6539,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.401     1.631    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.676 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.212     1.888    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.641 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.212     1.853    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6580,7 +6581,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.279ns  (logic 1.585ns (30.032%)  route 3.693ns (69.968%))
+  Data Path Delay:        5.517ns  (logic 1.585ns (28.736%)  route 3.932ns (71.264%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -1.550ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns
@@ -6596,9 +6597,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.078     4.540    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.664 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     5.279    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           3.317     4.778    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.902 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     5.517    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[0]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6622,7 +6623,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.279ns  (logic 1.585ns (30.032%)  route 3.693ns (69.968%))
+  Data Path Delay:        5.517ns  (logic 1.585ns (28.736%)  route 3.932ns (71.264%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -1.550ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns
@@ -6638,9 +6639,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.078     4.540    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.664 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     5.279    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           3.317     4.778    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.902 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     5.517    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6664,7 +6665,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.279ns  (logic 1.585ns (30.032%)  route 3.693ns (69.968%))
+  Data Path Delay:        5.517ns  (logic 1.585ns (28.736%)  route 3.932ns (71.264%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -1.550ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns
@@ -6680,9 +6681,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.078     4.540    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.664 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     5.279    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           3.317     4.778    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.902 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     5.517    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[2]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6706,7 +6707,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.279ns  (logic 1.585ns (30.032%)  route 3.693ns (69.968%))
+  Data Path Delay:        5.517ns  (logic 1.585ns (28.736%)  route 3.932ns (71.264%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -1.550ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns
@@ -6722,9 +6723,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.078     4.540    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.664 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.615     5.279    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           3.317     4.778    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.902 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.615     5.517    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6748,7 +6749,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.144ns  (logic 1.585ns (30.822%)  route 3.558ns (69.178%))
+  Data Path Delay:        5.382ns  (logic 1.585ns (29.458%)  route 3.796ns (70.542%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -1.549ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.549ns
@@ -6764,9 +6765,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.078     4.540    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.664 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.480     5.144    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           3.317     4.778    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.124     4.902 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.480     5.382    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6790,7 +6791,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Setup (Max at Slow Process Corner)
-  Data Path Delay:        5.110ns  (logic 1.709ns (33.451%)  route 3.401ns (66.549%))
+  Data Path Delay:        5.181ns  (logic 1.709ns (32.991%)  route 3.472ns (67.009%))
   Logic Levels:           3  (IBUF=1 LUT3=1 LUT6=1)
   Clock Path Skew:        -1.550ns (DCD - SCD + CPR)
     Destination Clock Delay (DCD):    -1.550ns
@@ -6806,11 +6807,11 @@ Slack:                    inf
     V16                                               0.000     0.000 r  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         1.461     1.461 r  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           3.246     4.708    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I0_O)        0.124     4.832 r  i2c_baud_rate_generator/sys_tick_reg_i_2/O
-                         net (fo=1, routed)           0.154     4.986    i2c_baud_rate_generator/sys_tick_reg_i_2_n_0
-    SLICE_X37Y46         LUT3 (Prop_lut3_I2_O)        0.124     5.110 r  i2c_baud_rate_generator/sys_tick_reg_i_1/O
-                         net (fo=1, routed)           0.000     5.110    i2c_baud_rate_generator/sys_tick_reg_i_1_n_0
+                         net (fo=8, routed)           3.318     4.779    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I0_O)        0.124     4.903 r  i2c_baud_rate_generator/sys_tick_reg_i_2/O
+                         net (fo=1, routed)           0.154     5.057    i2c_baud_rate_generator/sys_tick_reg_i_2_n_0
+    SLICE_X37Y46         LUT3 (Prop_lut3_I2_O)        0.124     5.181 r  i2c_baud_rate_generator/sys_tick_reg_i_1/O
+                         net (fo=1, routed)           0.000     5.181    i2c_baud_rate_generator/sys_tick_reg_i_1_n_0
     SLICE_X37Y46         FDRE                                         r  i2c_baud_rate_generator/sys_tick_reg_reg/D
   -------------------------------------------------------------------    -------------------
 
@@ -6840,7 +6841,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.600ns  (logic 0.274ns (17.150%)  route 1.325ns (82.850%))
+  Data Path Delay:        1.641ns  (logic 0.274ns (16.720%)  route 1.367ns (83.280%))
   Logic Levels:           2  (IBUF=1 LUT3=1)
   Clock Path Skew:        -0.858ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.858ns
@@ -6852,9 +6853,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.325     1.555    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT3 (Prop_lut3_I0_O)        0.045     1.600 r  i2c_baud_rate_generator/sys_tick_reg_i_1/O
-                         net (fo=1, routed)           0.000     1.600    i2c_baud_rate_generator/sys_tick_reg_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT3 (Prop_lut3_I0_O)        0.045     1.641 r  i2c_baud_rate_generator/sys_tick_reg_i_1/O
+                         net (fo=1, routed)           0.000     1.641    i2c_baud_rate_generator/sys_tick_reg_i_1_n_0
     SLICE_X37Y46         FDRE                                         r  i2c_baud_rate_generator/sys_tick_reg_reg/D
   -------------------------------------------------------------------    -------------------
 
@@ -6878,7 +6879,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.828ns  (logic 0.274ns (15.012%)  route 1.553ns (84.988%))
+  Data Path Delay:        1.793ns  (logic 0.274ns (15.304%)  route 1.518ns (84.696%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -0.857ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.857ns
@@ -6890,9 +6891,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.401     1.631    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.676 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.152     1.828    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.641 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.152     1.793    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y47         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[4]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6916,7 +6917,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.888ns  (logic 0.274ns (14.533%)  route 1.613ns (85.467%))
+  Data Path Delay:        1.853ns  (logic 0.274ns (14.806%)  route 1.579ns (85.194%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -0.858ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.858ns
@@ -6928,9 +6929,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.401     1.631    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.676 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.212     1.888    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.641 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.212     1.853    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[0]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6954,7 +6955,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.888ns  (logic 0.274ns (14.533%)  route 1.613ns (85.467%))
+  Data Path Delay:        1.853ns  (logic 0.274ns (14.806%)  route 1.579ns (85.194%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -0.858ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.858ns
@@ -6966,9 +6967,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.401     1.631    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.676 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.212     1.888    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.641 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.212     1.853    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[1]/R
   -------------------------------------------------------------------    -------------------
 
@@ -6992,7 +6993,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.888ns  (logic 0.274ns (14.533%)  route 1.613ns (85.467%))
+  Data Path Delay:        1.853ns  (logic 0.274ns (14.806%)  route 1.579ns (85.194%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -0.858ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.858ns
@@ -7004,9 +7005,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.401     1.631    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.676 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.212     1.888    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.641 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.212     1.853    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[2]/R
   -------------------------------------------------------------------    -------------------
 
@@ -7030,7 +7031,7 @@ Slack:                    inf
                             (rising edge-triggered cell FDRE clocked by clk_out1_sys_pll_1  {rise@0.000ns fall@12.500ns period=25.000ns})
   Path Group:             (none)
   Path Type:              Hold (Min at Fast Process Corner)
-  Data Path Delay:        1.888ns  (logic 0.274ns (14.533%)  route 1.613ns (85.467%))
+  Data Path Delay:        1.853ns  (logic 0.274ns (14.806%)  route 1.579ns (85.194%))
   Logic Levels:           2  (IBUF=1 LUT6=1)
   Clock Path Skew:        -0.858ns (DCD - SCD - CPR)
     Destination Clock Delay (DCD):    -0.858ns
@@ -7042,9 +7043,9 @@ Slack:                    inf
     V16                                               0.000     0.000 f  reset_n (IN)
                          net (fo=0)                   0.000     0.000    reset_n
     V16                  IBUF (Prop_ibuf_I_O)         0.229     0.229 f  reset_n_IBUF_inst/O
-                         net (fo=8, routed)           1.401     1.631    i2c_baud_rate_generator/reset_n_IBUF
-    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.676 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
-                         net (fo=5, routed)           0.212     1.888    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
+                         net (fo=8, routed)           1.367     1.596    i2c_baud_rate_generator/reset_n_IBUF
+    SLICE_X37Y46         LUT6 (Prop_lut6_I5_O)        0.045     1.641 r  i2c_baud_rate_generator/counterTick[0]_i_1/O
+                         net (fo=5, routed)           0.212     1.853    i2c_baud_rate_generator/counterTick[0]_i_1_n_0
     SLICE_X36Y46         FDRE                                         r  i2c_baud_rate_generator/counterTick_reg[3]/R
   -------------------------------------------------------------------    -------------------
 

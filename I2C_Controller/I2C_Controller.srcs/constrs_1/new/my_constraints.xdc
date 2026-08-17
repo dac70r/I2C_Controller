@@ -45,38 +45,70 @@ set_property IOSTANDARD LVCMOS33 [get_ports {cmd[0]}]
 
 
 ## LEDs
-#set_property PACKAGE_PIN U16 [get_ports led_15]
-#set_property IOSTANDARD LVCMOS33 [get_ports led_15]
-#set_property PACKAGE_PIN E19 [get_ports {tx_done_tick}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {tx_done_tick}]
-#set_property PACKAGE_PIN U19 [get_ports {rx_done_tick}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {rx_done_tick}]
-#set_property PACKAGE_PIN V19 [get_ports {led_15}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {led_15}]
-#set_property PACKAGE_PIN W18 [get_ports {LED[4]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {LED[4]}]
-#set_property PACKAGE_PIN U15 [get_ports {LED[5]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {LED[5]}]
-#set_property PACKAGE_PIN U14 [get_ports {LED[6]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {LED[6]}]
-#set_property PACKAGE_PIN V14 [get_ports {LED[7]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {LED[7]}]
-#set_property PACKAGE_PIN V13 [get_ports {dout[0]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {dout[0]}]
-#set_property PACKAGE_PIN V3 [get_ports {dout[1]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {dout[1]}]
-#set_property PACKAGE_PIN W3 [get_ports {dout[2]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {dout[2]}]
-#set_property PACKAGE_PIN U3 [get_ports {dout[3]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {dout[3]}]
-#set_property PACKAGE_PIN P3 [get_ports {dout[4]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {dout[4]}]
-#set_property PACKAGE_PIN N3 [get_ports {dout[5]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {dout[5]}]
-#set_property PACKAGE_PIN P1 [get_ports {dout[6]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {dout[6]}]
-#set_property PACKAGE_PIN L1 [get_ports {dout[7]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {dout[7]}]
+# temp_low_byte[0] at U16 (lowest)
+set_property PACKAGE_PIN U16 [get_ports {temp_low_byte[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[0]}]
+
+# temp_low_byte[1] at E19
+set_property PACKAGE_PIN E19 [get_ports {temp_low_byte[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[1]}]
+
+# temp_low_byte[2] at U19
+set_property PACKAGE_PIN U19 [get_ports {temp_low_byte[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[2]}]
+
+# temp_low_byte[3] at V19
+set_property PACKAGE_PIN V19 [get_ports {temp_low_byte[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[3]}]
+
+# temp_low_byte[4] at W18
+set_property PACKAGE_PIN W18 [get_ports {temp_low_byte[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[4]}]
+
+# temp_low_byte[5] at U15
+set_property PACKAGE_PIN U15 [get_ports {temp_low_byte[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[5]}]
+
+# temp_low_byte[6] at U14
+set_property PACKAGE_PIN U14 [get_ports {temp_low_byte[6]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[6]}]
+
+# temp_low_byte[7] at V14
+set_property PACKAGE_PIN V14 [get_ports {temp_low_byte[7]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[7]}]
+
+# temp_low_byte[8] at V13
+set_property PACKAGE_PIN V13 [get_ports {temp_low_byte[8]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[8]}]
+
+# temp_low_byte[9] at V3
+set_property PACKAGE_PIN V3 [get_ports {temp_low_byte[9]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[9]}]
+
+# temp_low_byte[10] at W3
+set_property PACKAGE_PIN W3 [get_ports {temp_low_byte[10]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[10]}]
+
+# temp_low_byte[11] at U3
+set_property PACKAGE_PIN U3 [get_ports {temp_low_byte[11]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[11]}]
+
+# temp_low_byte[12] at P3
+set_property PACKAGE_PIN P3 [get_ports {temp_low_byte[12]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[12]}]
+
+# temp_low_byte[13] at N3
+set_property PACKAGE_PIN N3 [get_ports {temp_low_byte[13]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[13]}]
+
+# temp_low_byte[14] at P1
+set_property PACKAGE_PIN P1 [get_ports {temp_low_byte[14]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[14]}]
+
+# temp_low_byte[15] at L1 (highest)
+set_property PACKAGE_PIN L1 [get_ports {temp_low_byte[15]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {temp_low_byte[15]}]
+
 
 
 ##7 segment display
@@ -102,22 +134,22 @@ set_property IOSTANDARD LVCMOS33 [get_ports {cmd[0]}]
 #set_property PACKAGE_PIN U7 [get_ports {SSEG_CA[6]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[6]}]
 
-##Bank = 34, Pin name = ,						Sch name = DP
+###Bank = 34, Pin name = ,						Sch name = DP
 #set_property PACKAGE_PIN V7 [get_ports {SSEG_CA[7]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[7]}]
 
-##Bank = 34, Pin name = ,						Sch name = AN0
-#set_property PACKAGE_PIN U2 [get_ports {SSEG_AN[0]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_AN[0]}]
-##Bank = 34, Pin name = ,						Sch name = AN1
-#set_property PACKAGE_PIN U4 [get_ports {SSEG_AN[1]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_AN[1]}]
-##Bank = 34, Pin name = ,						Sch name = AN2
-#set_property PACKAGE_PIN V4 [get_ports {SSEG_AN[2]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_AN[2]}]
-##Bank = 34, Pin name = ,					Sch name = AN3
-#set_property PACKAGE_PIN W4 [get_ports {SSEG_AN[3]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_AN[3]}]
+#Bank = 34, Pin name = ,						Sch name = AN0
+set_property PACKAGE_PIN U2 [get_ports {SSEG_AN[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_AN[0]}]
+#Bank = 34, Pin name = ,						Sch name = AN1
+set_property PACKAGE_PIN U4 [get_ports {SSEG_AN[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_AN[1]}]
+#Bank = 34, Pin name = ,						Sch name = AN2
+set_property PACKAGE_PIN V4 [get_ports {SSEG_AN[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_AN[2]}]
+#Bank = 34, Pin name = ,					Sch name = AN3
+set_property PACKAGE_PIN W4 [get_ports {SSEG_AN[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_AN[3]}]
 
 
 #Buttons
@@ -170,16 +202,16 @@ set_property IOSTANDARD LVCMOS33 [get_ports {cmd[0]}]
 ##Sch name = JB1
 set_property PACKAGE_PIN A14 [get_ports sda]
 set_property IOSTANDARD LVCMOS33 [get_ports sda]
-set_property PULLUP true [get_ports sda]
+set_property PULLTYPE PULLUP [get_ports sda]
 
 ##Sch name = JB2
 set_property PACKAGE_PIN A16 [get_ports sclk]
 set_property IOSTANDARD LVCMOS33 [get_ports sclk]
-set_property PULLUP true [get_ports sclk]
+set_property PULLTYPE PULLUP [get_ports sclk]
 
 ##Sch name = JB3
-set_property PACKAGE_PIN B15 [get_ports {i2c_transaction_complete}]
-set_property IOSTANDARD LVCMOS33 [get_ports {i2c_transaction_complete}]
+set_property PACKAGE_PIN B15 [get_ports i2c_transaction_complete]
+set_property IOSTANDARD LVCMOS33 [get_ports i2c_transaction_complete]
 ##Sch name = JB4
 #set_property PACKAGE_PIN B16 [get_ports {JB[3]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {JB[3]}]
@@ -199,30 +231,30 @@ set_property IOSTANDARD LVCMOS33 [get_ports {i2c_transaction_complete}]
 
 
 ##Pmod Header JC
-##Bank = 35, Pin name = IO_L23P_T3_35,						Sch name = JC1
-#set_property PACKAGE_PIN K2 [get_ports {JC[0]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {JC[0]}]
-##Bank = 35, Pin name = IO_L6P_T0_35,						Sch name = JC2
-#set_property PACKAGE_PIN E7 [get_ports {JC[1]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {JC[1]}]
-##Bank = 35, Pin name = IO_L22P_T3_35,						Sch name = JC3
-#set_property PACKAGE_PIN J3 [get_ports {JC[2]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {JC[2]}]
-##Bank = 35, Pin name = IO_L21P_T3_DQS_35,					Sch name = JC4
-#set_property PACKAGE_PIN J4 [get_ports {JC[3]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {JC[3]}]
-##Bank = 35, Pin name = IO_L23N_T3_35,						Sch name = JC7
-#set_property PACKAGE_PIN K1 [get_ports {JC[4]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {JC[4]}]
-##Bank = 35, Pin name = IO_L5P_T0_AD13P_35,					Sch name = JC8
-#set_property PACKAGE_PIN E6 [get_ports {JC[5]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {JC[5]}]
-##Bank = 35, Pin name = IO_L22N_T3_35,						Sch name = JC9
-#set_property PACKAGE_PIN J2 [get_ports {JC[6]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {JC[6]}]
-##Bank = 35, Pin name = IO_L19P_T3_35,						Sch name = JC10
-#set_property PACKAGE_PIN G6 [get_ports {JC[7]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {JC[7]}]
+##Sch name = JC1
+set_property PACKAGE_PIN K17 [get_ports {test_port}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {test_port}]
+##Sch name = JC2
+#set_property PACKAGE_PIN M18 [get_ports {JC[1]}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {JC[1]}]
+##Sch name = JC3
+#set_property PACKAGE_PIN N17 [get_ports {JC[2]}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {JC[2]}]
+##Sch name = JC4
+#set_property PACKAGE_PIN P18 [get_ports {JC[3]}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {JC[3]}]
+##Sch name = JC7
+#set_property PACKAGE_PIN L17 [get_ports {JC[4]}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {JC[4]}]
+##Sch name = JC8
+#set_property PACKAGE_PIN M19 [get_ports {JC[5]}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {JC[5]}]
+##Sch name = JC9
+#set_property PACKAGE_PIN P17 [get_ports {JC[6]}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {JC[6]}]
+##Sch name = JC10
+#set_property PACKAGE_PIN R18 [get_ports {JC[7]}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {JC[7]}]
 
 
 ##Pmod Header JXADC
@@ -300,11 +332,11 @@ set_property IOSTANDARD LVCMOS33 [get_ports {i2c_transaction_complete}]
 
 ##USB-RS232 Interface
 ##Bank = 16, Pin name = ,					Sch name = UART_TXD_IN
-set_property PACKAGE_PIN B18        [get_ports uart_rx]
-set_property IOSTANDARD LVCMOS33    [get_ports uart_rx]
+set_property PACKAGE_PIN B18 [get_ports uart_rx]
+set_property IOSTANDARD LVCMOS33 [get_ports uart_rx]
 ##Bank = 16, Pin name = ,					Sch name = UART_RXD_OUT
-set_property PACKAGE_PIN A18        [get_ports uart_tx]
-set_property IOSTANDARD LVCMOS33    [get_ports uart_tx]
+set_property PACKAGE_PIN A18 [get_ports uart_tx]
+set_property IOSTANDARD LVCMOS33 [get_ports uart_tx]
 
 
 
