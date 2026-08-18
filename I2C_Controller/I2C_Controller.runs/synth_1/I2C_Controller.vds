@@ -3,8 +3,8 @@
 # SW Build 4029153 on Fri Oct 13 20:14:34 MDT 2023
 # IP Build 4028589 on Sat Oct 14 00:45:43 MDT 2023
 # SharedData Build 4025554 on Tue Oct 10 17:18:54 MDT 2023
-# Start of session at: Tue Aug 18 23:17:49 2026
-# Process ID: 23512
+# Start of session at: Wed Aug 19 01:02:26 2026
+# Process ID: 26212
 # Current directory: C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.runs/synth_1
 # Command line: vivado.exe -log I2C_Controller.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source I2C_Controller.tcl
 # Log file: C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.runs/synth_1/I2C_Controller.vds
@@ -12,7 +12,7 @@
 # Running On: DennisE16, OS: Windows, CPU Frequency: 3294 MHz, CPU Physical cores: 16, Host memory: 31854 MB
 #-----------------------------------------------------------
 source I2C_Controller.tcl -notrace
-create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 466.438 ; gain = 182.992
+create_project: Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 465.918 ; gain = 183.902
 Command: read_checkpoint -auto_incremental -incremental {C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/utils_1/imports/synth_1/Top_Module.dcp}
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/utils_1/imports/synth_1/Top_Module.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -25,19 +25,21 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 40280
+INFO: [Synth 8-7075] Helper process launched with PID 37136
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1313.805 ; gain = 442.789
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1311.402 ; gain = 440.676
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'I2C_Controller' [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/Top_Module.sv:5]
-INFO: [Synth 8-6157] synthesizing module 'sys_pll' [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.runs/synth_1/.Xil/Vivado-23512-DennisE16/realtime/sys_pll_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'sys_pll' (0#1) [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.runs/synth_1/.Xil/Vivado-23512-DennisE16/realtime/sys_pll_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'sys_pll' [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.runs/synth_1/.Xil/Vivado-26212-DennisE16/realtime/sys_pll_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'sys_pll' (0#1) [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.runs/synth_1/.Xil/Vivado-26212-DennisE16/realtime/sys_pll_stub.v:6]
 INFO: [Synth 8-6157] synthesizing module 'baud_rate_generator' [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/baud_rate_generator.sv:5]
 	Parameter counterTickMax bound to: 24 - type: integer 
 INFO: [Synth 8-6155] done synthesizing module 'baud_rate_generator' (0#1) [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/baud_rate_generator.sv:5]
 INFO: [Synth 8-6157] synthesizing module 'I2C_Core' [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/I2C_Controller.sv:3]
 INFO: [Synth 8-6155] done synthesizing module 'I2C_Core' (0#1) [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/I2C_Controller.sv:3]
 INFO: [Synth 8-6155] done synthesizing module 'I2C_Controller' (0#1) [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/Top_Module.sv:5]
+WARNING: [Synth 8-87] always_comb on 'i2c_data_storage_reg[1]' did not result in combinational logic [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/I2C_Controller.sv:206]
+WARNING: [Synth 8-87] always_comb on 'i2c_data_storage_reg[0]' did not result in combinational logic [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/I2C_Controller.sv:206]
 WARNING: [Synth 8-3848] Net uart_tx in module/entity I2C_Controller does not have driver. [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/Top_Module.sv:15]
 WARNING: [Synth 8-3917] design I2C_Controller has port SSEG_AN[3] driven by constant 1
 WARNING: [Synth 8-3917] design I2C_Controller has port SSEG_AN[2] driven by constant 1
@@ -46,18 +48,18 @@ WARNING: [Synth 8-3917] design I2C_Controller has port SSEG_AN[0] driven by cons
 WARNING: [Synth 8-7129] Port uart_tx in module I2C_Controller is either unconnected or has no load
 WARNING: [Synth 8-7129] Port uart_rx in module I2C_Controller is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1421.977 ; gain = 550.961
+Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1422.453 ; gain = 551.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1421.977 ; gain = 550.961
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1422.453 ; gain = 551.727
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1421.977 ; gain = 550.961
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 1422.453 ; gain = 551.727
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1421.977 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1422.453 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -70,22 +72,22 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/I2C_Controller_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1471.172 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1519.133 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1471.172 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1519.133 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Constraint Validation : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -94,7 +96,7 @@ Applied set_property IO_BUFFER_TYPE = NONE for sys_clk. (constraint file  {c:/Us
 Applied set_property CLOCK_BUFFER_TYPE = NONE for sys_clk. (constraint file  {c:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.gen/sources_1/ip/sys_pll/sys_pll/sys_pll_in_context.xdc}, line 4).
 Applied set_property KEEP_HIERARCHY = SOFT for clock_40mhz. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:28 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'stateNow_reg' in module 'I2C_Core'
 ---------------------------------------------------------------------------------------------------
@@ -119,36 +121,35 @@ INFO: [Synth 8-802] inferred FSM for state register 'stateNow_reg' in module 'I2
                   delay2 |                10000000000000000 | 00000000000000000000000000010011
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'stateNow_reg' using encoding 'one-hot' in module 'I2C_Core'
+WARNING: [Synth 8-327] inferring latch for variable 'i2c_data_storage_reg[0]' [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/I2C_Controller.sv:206]
+WARNING: [Synth 8-327] inferring latch for variable 'i2c_data_storage_reg[1]' [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/I2C_Controller.sv:206]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:29 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:26 ; elapsed = 00:00:29 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
+	   2 Input   32 Bit       Adders := 1     
 	   2 Input   19 Bit       Adders := 1     
-	   2 Input    6 Bit       Adders := 1     
 	   2 Input    5 Bit       Adders := 2     
 	   2 Input    3 Bit       Adders := 1     
 +---Registers : 
 	               19 Bit    Registers := 1     
-	               16 Bit    Registers := 1     
-	                6 Bit    Registers := 1     
 	                5 Bit    Registers := 2     
 	                1 Bit    Registers := 6     
 +---Muxes : 
 	   2 Input   19 Bit        Muxes := 1     
 	  17 Input   17 Bit        Muxes := 1     
 	   2 Input   17 Bit        Muxes := 6     
-	   2 Input   16 Bit        Muxes := 1     
-	  17 Input   16 Bit        Muxes := 1     
-	  17 Input    6 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 4     
+	  17 Input    8 Bit        Muxes := 2     
 	   2 Input    5 Bit        Muxes := 2     
 	  17 Input    5 Bit        Muxes := 2     
 	   2 Input    1 Bit        Muxes := 8     
 	   3 Input    1 Bit        Muxes := 1     
-	  17 Input    1 Bit        Muxes := 11    
+	  17 Input    1 Bit        Muxes := 10    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -172,25 +173,25 @@ WARNING: [Synth 8-3917] design I2C_Controller has port SSEG_AN[0] driven by cons
 WARNING: [Synth 8-7129] Port uart_tx in module I2C_Controller is either unconnected or has no load
 WARNING: [Synth 8-7129] Port uart_rx in module I2C_Controller is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:32 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:33 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:40 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:40 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Timing Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:40 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Technology Mapping : Time (s): cpu = 00:00:36 ; elapsed = 00:00:40 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -208,37 +209,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished IO Insertion : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -260,40 +261,42 @@ Report Cell Usage:
 |3     |CARRY4  |     7|
 |4     |LUT1    |     3|
 |5     |LUT2    |    22|
-|6     |LUT3    |    11|
-|7     |LUT4    |    15|
-|8     |LUT5    |    31|
-|9     |LUT6    |    22|
-|10    |FDRE    |    77|
+|6     |LUT3    |     9|
+|7     |LUT4    |    31|
+|8     |LUT5    |    13|
+|9     |LUT6    |    21|
+|10    |FDRE    |    55|
 |11    |FDSE    |     2|
-|12    |IBUF    |     5|
-|13    |IOBUF   |     1|
-|14    |OBUF    |    23|
-|15    |OBUFT   |     1|
+|12    |LD      |    16|
+|13    |IBUF    |     5|
+|14    |IOBUF   |     1|
+|15    |OBUF    |    23|
+|16    |OBUFT   |     1|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 1519.133 ; gain = 648.406
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:00:44 . Memory (MB): peak = 1471.172 ; gain = 550.961
-Synthesis Optimization Complete : Time (s): cpu = 00:00:41 ; elapsed = 00:00:47 . Memory (MB): peak = 1471.172 ; gain = 600.156
+Synthesis finished with 0 errors, 0 critical warnings and 9 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:28 ; elapsed = 00:00:45 . Memory (MB): peak = 1519.133 ; gain = 551.727
+Synthesis Optimization Complete : Time (s): cpu = 00:00:43 ; elapsed = 00:00:48 . Memory (MB): peak = 1519.133 ; gain = 648.406
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1471.172 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1519.133 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 24 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1471.172 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1519.133 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 1 instances were transformed.
+  A total of 17 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 1 instance 
+  LD => LDCE: 16 instances
 
-Synth Design complete | Checksum: 50c236a9
+Synth Design complete | Checksum: b0d7ad50
 INFO: [Common 17-83] Releasing license: Synthesis
-31 Infos, 14 Warnings, 0 Critical Warnings and 0 Errors encountered.
+31 Infos, 18 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:48 ; elapsed = 00:00:55 . Memory (MB): peak = 1471.172 ; gain = 991.852
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1471.172 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:49 ; elapsed = 00:00:57 . Memory (MB): peak = 1519.133 ; gain = 1039.504
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1519.133 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.runs/synth_1/I2C_Controller.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file I2C_Controller_utilization_synth.rpt -pb I2C_Controller_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Aug 18 23:18:57 2026...
+INFO: [Common 17-206] Exiting Vivado at Wed Aug 19 01:03:38 2026...

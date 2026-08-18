@@ -10,7 +10,7 @@ module I2C_Core # (parameter
         input [7:0] i2c_eight_bit_opcode,
         output      i2c_sclk,
         inout       i2c_sda,
-        output      [readBits-1: 0] i2c_sda_read_bit, 
+        output reg [readBits-1: 0] i2c_sda_read_bit, 
         output      i2c_transaction_complete
     );
     
@@ -37,12 +37,8 @@ module I2C_Core # (parameter
     reg read_write_reg = 'd0;       reg read_write_reg_next = 'd0;        // this register keeps track of whether read/ write was selected during i2c addressing stage 0 for write, 1 for read.
     reg i2c_sda_out_en = 'd1;       reg i2c_sda_out_en_next = 'd1;        // this register keeps track of whether i2c sda bus is input or output
     
-    reg [readBits-1:0] i2c_sda_read_bit_now = 'd0;  
-    reg [readBits-1:0] i2c_sda_read_bit_next = 'd0;
-    reg [5:0] readBitCount_now = 'd0; 
-    reg [5:0] readBitCount_next = 'd0;
-    reg [2:0] readByteCount_now = readBytes;
-    reg [2:0] readByteCount_next = readBytes;
+    reg [7:0] i2c_data_storage [readBytes-1:0];                           // Read Bytes are seperated into chunks of 8, there are (readBytes) chunks
+    //reg [readBits-1:0] i2c_data_read_bit_register = '0;                   // Concatenate 
     
     always_ff @ (posedge sys_tick)              // sys_tick is 
     begin
@@ -55,10 +51,8 @@ module I2C_Core # (parameter
                 dataByte_now        <= 'd0;     // idle
                 read_write_reg      <= 'd0;
                 i2c_sda_out_en      <= 'd1;
-                i2c_sda_read_bit_now<= 'd0;
                 i2c_transaction_complete_now <= 'd0;
                 delayCountNow       <= 'd0;
-                readBitCount_now    <= 'd0;
             end
         else
             begin
@@ -70,9 +64,7 @@ module I2C_Core # (parameter
                 read_write_reg      <= read_write_reg_next;
                 i2c_sda_out_en      <= i2c_sda_out_en_next;
                 i2c_transaction_complete_now <= i2c_transaction_complete_next;
-                i2c_sda_read_bit_now<= i2c_sda_read_bit_next;
                 delayCountNow       <= delayCountNext;
-                readBitCount_now    <= readBitCount_next;
             end
     end
     
@@ -85,10 +77,8 @@ module I2C_Core # (parameter
         dataByte_next       = dataByte_now;
         read_write_reg_next = read_write_reg;
         i2c_sda_out_en_next = i2c_sda_out_en;
-        i2c_sda_read_bit_next = i2c_sda_read_bit_now;
         i2c_transaction_complete_next = i2c_transaction_complete_now;
         delayCountNext      = delayCountNow;
-        readBitCount_next   = readBitCount_now;
         case(stateNow)
             idle:
                 begin
@@ -212,8 +202,9 @@ module I2C_Core # (parameter
                 begin
                     stateNext = data3;
                     i2c_sclk_reg_next   = 'd1;                                      // SCLK 1
-                    if(read_write_reg_next == 'd1)
-                        i2c_sda_read_bit_next[readBitCount_next] = i2c_sda;            // i2c_sda inverted because LED is active LOW                     
+                    if(read_write_reg_next == 'd1)        
+                        i2c_data_storage[dataByte_next][7-dataBit_next] = i2c_sda;
+     
                 end
             data3:
                 begin
@@ -222,8 +213,8 @@ module I2C_Core # (parameter
                 end
             data4:
                 begin
-                    i2c_sclk_reg_next = 'd0;                                            // SCLK 0
-                    if(read_write_reg_next == 'd0)                                      // I2C WRITE
+                    i2c_sclk_reg_next = 'd0;                                         // SCLK 0
+                    if(read_write_reg_next == 'd0)                                   // I2C WRITE
                         begin
                             if(dataBit_next <8)
                                 begin 
@@ -238,7 +229,6 @@ module I2C_Core # (parameter
                         end
                     else
                         begin
-                            readBitCount_next = readBitCount_next - 'd1;
                             if(dataBit_next <8)
                                 begin
                                     i2c_sda_out_en_next = 'd0; 
@@ -269,7 +259,7 @@ module I2C_Core # (parameter
                     i2c_sda_reg_next    = 'd0;
                     i2c_sclk_reg_next   = 'd0;  // data_end condition 
                     i2c_sda_out_en_next = 'd1;  
-                    readBitCount_next   = 'd15;   
+                    //readBitCount_next   = 'd15;   
                 end
                 
             stop1:
@@ -311,9 +301,17 @@ module I2C_Core # (parameter
         endcase
     end
     
+    always_comb
+    begin
+        for(int count=0; count<readBytes; count++)
+        begin
+            i2c_sda_read_bit = {i2c_sda_read_bit << 8 | i2c_data_storage[count]};
+        end
+    end
+    
 
     assign i2c_sclk = i2c_sclk_reg_now;
     assign i2c_sda = (i2c_sda_out_en == 'd1) ? i2c_sda_reg_now : 'dZ;
     assign i2c_transaction_complete = i2c_transaction_complete_now;
-    assign i2c_sda_read_bit = i2c_sda_read_bit_now;
+    //assign i2c_sda_read_bit = {i2c_data_storage[0],i2c_data_storage[1]};  
 endmodule

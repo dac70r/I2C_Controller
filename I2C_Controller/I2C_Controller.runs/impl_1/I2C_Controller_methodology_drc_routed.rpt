@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Aug 18 23:20:30 2026
+| Date         : Wed Aug 19 01:05:12 2026
 | Host         : DennisE16 running 64-bit major release  (build 9200)
 | Command      : report_methodology -file I2C_Controller_methodology_drc_routed.rpt -pb I2C_Controller_methodology_drc_routed.pb -rpx I2C_Controller_methodology_drc_routed.rpx
 | Design       : I2C_Controller
@@ -23,13 +23,15 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 77
+             Violations found: 72
 +-----------+------------------+------------------------------------------------------------------+------------+
 | Rule      | Severity         | Description                                                      | Violations |
 +-----------+------------------+------------------------------------------------------------------+------------+
 | TIMING-6  | Critical Warning | No common primary clock between related clocks                   | 2          |
-| TIMING-17 | Critical Warning | Non-clocked sequential cell                                      | 73         |
+| TIMING-17 | Critical Warning | Non-clocked sequential cell                                      | 51         |
+| TIMING-20 | Warning          | Non-clocked latch                                                | 16         |
 | TIMING-56 | Warning          | Missing logically or physically excluded clock groups constraint | 2          |
+| LATCH-1   | Advisory         | Existing latches in the design                                   | 1          |
 +-----------+------------------+------------------------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -286,127 +288,97 @@ Related violations: <none>
 
 TIMING-17#49 Critical Warning
 Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[0]/C is not reached by a timing clock
+The clock pin my_I2C_Core/i2c_sda_reg_now_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#50 Critical Warning
 Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[10]/C is not reached by a timing clock
+The clock pin my_I2C_Core/i2c_transaction_complete_now_reg/C is not reached by a timing clock
 Related violations: <none>
 
 TIMING-17#51 Critical Warning
 Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[11]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#52 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[12]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#53 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[13]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#54 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[14]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#55 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[15]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#56 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#57 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#58 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[3]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#59 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[4]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#60 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[5]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#61 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[6]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#62 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[7]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#63 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[8]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#64 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_read_bit_now_reg[9]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#65 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_sda_reg_now_reg/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#66 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/i2c_transaction_complete_now_reg/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#67 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/readBitCount_now_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#68 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/readBitCount_now_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#69 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/readBitCount_now_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#70 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/readBitCount_now_reg[3]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#71 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/readBitCount_now_reg[4]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#72 Critical Warning
-Non-clocked sequential cell  
-The clock pin my_I2C_Core/readBitCount_now_reg[5]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#73 Critical Warning
-Non-clocked sequential cell  
 The clock pin my_I2C_Core/read_write_reg_reg/C is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#1 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[0][0] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[0][0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#2 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[0][1] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[0][1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#3 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[0][2] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[0][2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#4 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[0][3] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[0][3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#5 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[0][4] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[0][4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#6 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[0][5] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[0][5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#7 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[0][6] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[0][6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#8 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[0][7] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[0][7]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#9 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[1][0] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[1][0]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#10 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[1][1] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[1][1]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#11 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[1][2] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[1][2]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#12 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[1][3] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[1][3]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#13 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[1][4] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[1][4]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#14 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[1][5] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[1][5]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#15 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[1][6] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[1][6]/G is not reached by a timing clock
+Related violations: <none>
+
+TIMING-20#16 Warning
+Non-clocked latch  
+The latch my_I2C_Core/i2c_data_storage_reg[1][7] cannot be properly analyzed as its control pin my_I2C_Core/i2c_data_storage_reg[1][7]/G is not reached by a timing clock
 Related violations: <none>
 
 TIMING-56#1 Warning
@@ -417,6 +389,11 @@ Related violations: <none>
 TIMING-56#2 Warning
 Missing logically or physically excluded clock groups constraint  
 Multiple clocks are user generated or auto-derived on the source pin clock_40mhz/inst/mmcm_adv_inst/CLKOUT0 but are not logically or physically exclusive with respect to one another. To have the static timing analysis match the behavior in hardware, there cannot be multiple clocks generated on the same pin and when such situation occurs, the clocks should be defined as physically or logically exclusive. The list of clocks generated on the source pin is: clk_out1_sys_pll, clk_out1_sys_pll_1
+Related violations: <none>
+
+LATCH-1#1 Advisory
+Existing latches in the design  
+There are 16 latches found in the design. Inferred latches are often the result of HDL coding mistakes, such as incomplete if or case statements.
 Related violations: <none>
 
 

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Tue Aug 18 23:19:50 2026
+| Date         : Wed Aug 19 01:04:31 2026
 | Host         : DennisE16 running 64-bit major release  (build 9200)
 | Command      : report_drc -file I2C_Controller_drc_opted.rpt -pb I2C_Controller_drc_opted.pb -rpx I2C_Controller_drc_opted.rpx
 | Design       : I2C_Controller
