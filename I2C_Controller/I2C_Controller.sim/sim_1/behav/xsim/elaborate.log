@@ -5,9 +5,13 @@ Running: C:/Xilinx/Vivado/2023.2/bin/unwrapped/win64.o/xelab.exe --incr --debug 
 Using 2 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3823] variable 'sclk' might have multiple concurrent drivers [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/my_sim.sv:13]
+WARNING: [VRFC 10-3823] variable 'sclk' might have multiple concurrent drivers [C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.sim/my_sim.sv:22]
 Completed static elaboration
 Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/baud_rate_generator.sv" Line 5. Module baud_rate_generator(counterTickMax=24) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/i2c_controller.sv" Line 10. Module i2c_controller doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/baud_rate_generator.sv" Line 5. Module baud_rate_generator(counterTickMax=24) doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/i2c_controller.sv" Line 10. Module i2c_controller doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module unisims_ver.IBUF
@@ -15,9 +19,10 @@ Compiling module unisims_ver.MMCME2_ADV(CLKFBOUT_MULT_F=10.0,...
 Compiling module unisims_ver.BUFG
 Compiling module xil_defaultlib.sys_pll_clk_wiz
 Compiling module xil_defaultlib.sys_pll
-Compiling module xil_defaultlib.baud_rate_generator
-Compiling module xil_defaultlib.I2C_Controller
-Compiling module xil_defaultlib.Top_Module
+Compiling module xil_defaultlib.baud_rate_generator(counterTickM...
+Compiling module xil_defaultlib.i2c_controller
+Compiling module xil_defaultlib.i2c_core
+Compiling module xil_defaultlib.top_module_default
 Compiling module xil_defaultlib.my_sim
 Compiling module xil_defaultlib.glbl
 Built simulation snapshot my_sim_behav

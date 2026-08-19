@@ -2,35 +2,35 @@
     File description: Top module file for the I2C Controller project.
 */
 
-module I2C_Controller (
+module top_module (
     input       sys_clk,
     input       reset_n,
+    output [3:0] SSEG_AN,
     // ------------------ //
-    input [3:0] cmd, 
+    
     output      sclk,
     inout       sda,
     output      i2c_transaction_complete,
     // ------------------ //
+    
     input       uart_rx,
     output      uart_tx,
     // ------------------ //
-    //output [7:0] temp_high_byte,
-    output [15:0] temp_low_byte,
-    output [3:0] SSEG_AN,
-    output      test_port
+    
+    output [15:0] temp_low_byte,            // LED
+    output      test_port                   // Test port for probing
 );
     
     `include "i2c_peripheral.vh"
     
     localparam READBYTES = 2'd2;        
     localparam READBITS = 5'd16;        // <---------------- CHANGE THIS FOR APPROPRIATE NO OF READBITS (READBYTES * 8)
-
-    localparam i2c_seven_bit_addr_reg = ADDR_BH1750;         // 7-bit i2c address (0x23)
-    localparam i2c_eight_bit_addr_reg = CMD_CONT_LOW_RES;    // 8-bit opecode (config data) 
     
     wire i2c_sys_tick, uart_sys_tick;                       // wire for: i2c, uart
     wire pll_output_clk;                                    // Output Clock from clocking wizard
     wire [READBITS-1:0] i2c_sda_read_bit;                   // Output from I2C_Core
+    wire [2:0] command_controller_to_core;
+    wire i2c_transaction_complete_core_to_controller;
     
     sys_pll clock_40mhz
     (.clk_in1(sys_clk), .resetn(reset_n), .clk_out1(pll_output_clk));    // Generate 40Mhz CLK
@@ -38,16 +38,21 @@ module I2C_Controller (
     baud_rate_generator #(.counterTickMax(24)) i2c_baud_rate_generator  // Generate 1600kHz CLK (400kHz * 4)
     (.sys_clk(pll_output_clk), .reset_n(reset_n), .sys_tick(i2c_sys_tick));
     
-    I2C_Core my_I2C_Core(
+    i2c_controller my_i2c_controller(
+        .sys_tick(i2c_sys_tick),         
+        .reset_n(reset_n),
+        .cmd(command_controller_to_core),         
+        .i2c_transaction_complete(i2c_transaction_complete_core_to_controller)
+    );
+    
+    i2c_core my_i2c_core(
         .sys_tick(i2c_sys_tick),
         .reset_n(reset_n),
-        .cmd(cmd),   
-        .i2c_seven_bit_addr(i2c_seven_bit_addr_reg),    
-        .i2c_eight_bit_opcode(i2c_eight_bit_addr_reg),
+        .cmd(command_controller_to_core),   
         .i2c_sclk(sclk),
         .i2c_sda(sda),
         .i2c_sda_read_bit(i2c_sda_read_bit),
-        .i2c_transaction_complete(i2c_transaction_complete)
+        .i2c_transaction_complete(i2c_transaction_complete_core_to_controller)
     );
     
     // ------------------------------------ uart --------------------------------------------------------------- //
@@ -74,5 +79,6 @@ module I2C_Controller (
     assign SSEG_AN [3:0]    = 4'b1111; 
     assign temp_low_byte    = i2c_sda_read_bit;
     assign test_port        = i2c_sda_read_bit[15];
+    assign i2c_transaction_complete = i2c_transaction_complete_core_to_controller;
     
 endmodule

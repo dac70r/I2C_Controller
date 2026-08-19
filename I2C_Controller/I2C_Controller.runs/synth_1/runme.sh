@@ -41,4 +41,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log I2C_Controller.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source I2C_Controller.tcl
+EAStep vivado -log top_module.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_module.tcl

@@ -1,7 +1,0 @@
-set_property SRC_FILE_INFO {cfile:{C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Master/I2C_Master.srcs/constrs_1/new/my_constraints.xdc} rfile:../../../I2C_Master.srcs/constrs_1/new/my_constraints.xdc id:1} [current_design]
-set_property src_info {type:XDC file:1 line:12 export:INPUT save:INPUT read:READ} [current_design]
-set_property PACKAGE_PIN V17 [get_ports {sw}]
-set_property src_info {type:XDC file:1 line:47 export:INPUT save:INPUT read:READ} [current_design]
-set_property PACKAGE_PIN U16 [get_ports {LED[0]}]
-set_property src_info {type:XDC file:1 line:49 export:INPUT save:INPUT read:READ} [current_design]
-set_property PACKAGE_PIN E19 [get_ports {LED[1]}]
