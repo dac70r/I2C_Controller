@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Aug 19 23:46:34 2026
+| Date         : Thu Aug 20 00:08:40 2026
 | Host         : DennisE16 running 64-bit major release  (build 9200)
 | Command      : report_utilization -file top_module_utilization_synth.rpt -pb top_module_utilization_synth.pb
 | Design       : top_module
@@ -92,7 +92,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 +-----------------------------+------+-------+------------+-----------+-------+
 |          Site Type          | Used | Fixed | Prohibited | Available | Util% |
 +-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |   26 |     0 |          0 |       106 | 24.53 |
+| Bonded IOB                  |   24 |     0 |          0 |       106 | 22.64 |
 | Bonded IPADs                |    0 |     0 |          0 |        10 |  0.00 |
 | Bonded OPADs                |    0 |     0 |          0 |         4 |  0.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         5 |  0.00 |
@@ -154,7 +154,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | FDRE     |   56 |        Flop & Latch |
 | LUT6     |   42 |                 LUT |
 | LUT5     |   27 |                 LUT |
-| OBUF     |   23 |                  IO |
+| OBUF     |   21 |                  IO |
 | LDCE     |   17 |        Flop & Latch |
 | LUT4     |    8 |                 LUT |
 | LUT3     |    8 |                 LUT |

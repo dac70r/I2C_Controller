@@ -5,23 +5,19 @@
 module top_module (
     input       sys_clk,
     input       reset_n,
-    output [3:0] SSEG_AN,
-    // ------------------ //
+    output      [3:0] SSEG_AN,
+    // ------------------------ //
     
     output      sclk,
     inout       sda,
-    output      i2c_transaction_complete,
-    // ------------------ //
+    // ------------------------ //
     
     input       uart_rx,
-    output      uart_tx,
-    // ------------------ //
+    output      uart_tx,                    
+    // ------------------------ //
     
-    output [15:0] temp_low_byte,            // LED
-    output      test_port                   // Test port for probing
+    output [15:0] LED
 );
-    
-    `include "i2c_peripheral.vh"
     
     localparam READBYTES = 2'd2;        
     localparam READBITS = 5'd16;        // <---------------- CHANGE THIS FOR APPROPRIATE NO OF READBITS (READBYTES * 8)
@@ -77,8 +73,6 @@ module top_module (
     */
     
     assign SSEG_AN [3:0]    = 4'b1111; 
-    assign temp_low_byte    = i2c_sda_read_bit;
-    assign test_port        = i2c_sda_read_bit[15];
-    assign i2c_transaction_complete = i2c_transaction_complete_core_to_controller;
+    assign LED              = i2c_sda_read_bit;
     
 endmodule

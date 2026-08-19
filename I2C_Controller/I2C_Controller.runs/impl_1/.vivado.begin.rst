@@ -1,20 +1,5 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Dennis Wong" Host="DENNISE16" Pid="21248" HostCore="16" HostMemory="031854321664">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Dennis Wong" Host="DENNISE16" Pid="38172" HostCore="16" HostMemory="031854321664">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Dennis Wong" Host="DENNISE16" Pid="23952" HostCore="16" HostMemory="031854321664">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="Dennis Wong" Host="DENNISE16" Pid="36004" HostCore="16" HostMemory="031854321664">
+    <Process Command="vivado.bat" Owner="Dennis Wong" Host="DENNISE16" Pid="34972" HostCore="16" HostMemory="031854321664">
     </Process>
 </ProcessHandle>

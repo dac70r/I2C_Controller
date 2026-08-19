@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Wed Aug 19 23:47:28 2026
+| Date         : Thu Aug 20 00:09:28 2026
 | Host         : DennisE16 running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_module_control_sets_placed.rpt
 | Design       : top_module
@@ -60,10 +60,10 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | No           | No                    | No                     |              18 |           18 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              11 |            5 |
+| No           | Yes                   | No                     |              11 |            7 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              47 |           15 |
+| Yes          | Yes                   | No                     |              47 |           19 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -74,30 +74,30 @@ Table of Contents
 |                   Clock Signal                  |                Enable Signal                |                Set/Reset Signal                | Slice Load Count | Bel Load Count | Bels / Slice |
 +-------------------------------------------------+---------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
 |  clock_40mhz/inst/clk_out1                      |                                             |                                                |                1 |              1 |         1.00 |
+|  my_i2c_core/i2c_data_storage_reg[1][0]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
 |  my_i2c_core/command_next__0                    |                                             |                                                |                1 |              1 |         1.00 |
 |  my_i2c_core/i2c_data_storage_reg[1][2]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
-|  my_i2c_core/i2c_data_storage_reg[1][6]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
-|  my_i2c_core/i2c_data_storage_reg[1][5]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
-|  my_i2c_core/i2c_data_storage_reg[1][7]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
 |  my_i2c_core/i2c_data_storage_reg[1][3]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
-|  my_i2c_core/i2c_data_storage_reg[1][0]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
 |  my_i2c_core/i2c_data_storage_reg[1][4]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
+|  my_i2c_core/i2c_data_storage_reg[1][5]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
 |  my_i2c_core/i2c_data_storage_reg[1][1]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
-|  my_i2c_core/i2c_data_storage[4]                |                                             |                                                |                1 |              1 |         1.00 |
-|  my_i2c_core/i2c_data_storage[6]                |                                             |                                                |                1 |              1 |         1.00 |
+|  my_i2c_core/i2c_data_storage_reg[1][6]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
+|  my_i2c_core/i2c_data_storage_reg[1][7]_i_1_n_0 |                                             |                                                |                1 |              1 |         1.00 |
 |  my_i2c_core/i2c_data_storage[2]                |                                             |                                                |                1 |              1 |         1.00 |
-|  my_i2c_core/i2c_data_storage[5]                |                                             |                                                |                1 |              1 |         1.00 |
-|  my_i2c_core/i2c_data_storage[7]                |                                             |                                                |                1 |              1 |         1.00 |
 |  my_i2c_core/i2c_data_storage[3]                |                                             |                                                |                1 |              1 |         1.00 |
-|  my_i2c_core/i2c_data_storage[1]                |                                             |                                                |                1 |              1 |         1.00 |
+|  my_i2c_core/i2c_data_storage[4]                |                                             |                                                |                1 |              1 |         1.00 |
+|  my_i2c_core/i2c_data_storage[7]                |                                             |                                                |                1 |              1 |         1.00 |
 |  my_i2c_core/i2c_data_storage[0]                |                                             |                                                |                1 |              1 |         1.00 |
+|  my_i2c_core/i2c_data_storage[6]                |                                             |                                                |                1 |              1 |         1.00 |
+|  my_i2c_core/i2c_data_storage[5]                |                                             |                                                |                1 |              1 |         1.00 |
+|  my_i2c_core/i2c_data_storage[1]                |                                             |                                                |                1 |              1 |         1.00 |
 |  i2c_sys_tick_BUFG                              | my_i2c_core/i2c_sclk_reg_now_i_1_n_0        | my_i2c_core/SR[0]                              |                1 |              1 |         1.00 |
 |  clock_40mhz/inst/clk_out1                      |                                             | i2c_baud_rate_generator/counterTick[0]_i_1_n_0 |                2 |              5 |         2.50 |
+|  i2c_sys_tick_BUFG                              | my_i2c_core/dataByte_now[4]_i_1_n_0         | my_i2c_core/SR[0]                              |                2 |              5 |         2.50 |
 |  i2c_sys_tick_BUFG                              | my_i2c_core/dataBit_now[4]_i_1_n_0          | my_i2c_core/SR[0]                              |                2 |              5 |         2.50 |
-|  i2c_sys_tick_BUFG                              | my_i2c_core/dataByte_now[4]_i_1_n_0         | my_i2c_core/SR[0]                              |                1 |              5 |         5.00 |
-|  i2c_sys_tick_BUFG                              |                                             | my_i2c_core/SR[0]                              |                3 |              6 |         2.00 |
-|  i2c_sys_tick_BUFG                              | my_i2c_core/FSM_onehot_stateNow[16]_i_1_n_0 | my_i2c_core/SR[0]                              |                4 |             17 |         4.25 |
-|  i2c_sys_tick_BUFG                              | my_i2c_core/delayCountNext                  | my_i2c_core/SR[0]                              |                7 |             19 |         2.71 |
+|  i2c_sys_tick_BUFG                              |                                             | my_i2c_core/SR[0]                              |                5 |              6 |         1.20 |
+|  i2c_sys_tick_BUFG                              | my_i2c_core/FSM_onehot_stateNow[16]_i_1_n_0 | my_i2c_core/SR[0]                              |                6 |             17 |         2.83 |
+|  i2c_sys_tick_BUFG                              | my_i2c_core/delayCountNext                  | my_i2c_core/SR[0]                              |                8 |             19 |         2.38 |
 +-------------------------------------------------+---------------------------------------------+------------------------------------------------+------------------+----------------+--------------+
 
 
