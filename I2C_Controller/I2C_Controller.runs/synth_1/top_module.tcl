@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 4
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -86,12 +88,19 @@ set_property ip_output_repo {c:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Co
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog {{C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/i2c_peripheral.vh}}
+read_verilog {
+  {C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/i2c_peripheral.vh}
+  {C:/Users/Dennis Wong/Documents/FPGA_Projects/seven_segment_display/seven_segment_display/seven_segment_display.srcs/sources_1/new/seven_segment_lib.vh}
+}
 set_property file_type "Verilog Header" [get_files {{C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/i2c_peripheral.vh}}]
+set_property file_type "Verilog Header" [get_files {{C:/Users/Dennis Wong/Documents/FPGA_Projects/seven_segment_display/seven_segment_display/seven_segment_display.srcs/sources_1/new/seven_segment_lib.vh}}]
 read_verilog -library xil_defaultlib -sv {
   {C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/baud_rate_generator.sv}
+  {C:/Users/Dennis Wong/Documents/FPGA_Projects/seven_segment_display/seven_segment_display/seven_segment_display.srcs/sources_1/new/binary_convert_decimal.sv}
+  {C:/Users/Dennis Wong/Documents/FPGA_Projects/seven_segment_display/seven_segment_display/seven_segment_display.srcs/sources_1/new/debounce.sv}
   {C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/i2c_controller.sv}
   {C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/i2c_core.sv}
+  {C:/Users/Dennis Wong/Documents/FPGA_Projects/seven_segment_display/seven_segment_display/seven_segment_display.srcs/sources_1/new/seven_segment_core.sv}
   {C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/new/top_module.sv}
 }
 read_ip -quiet {{C:/Users/Dennis Wong/Documents/FPGA_Projects/I2C_Controller/I2C_Controller/I2C_Controller.srcs/sources_1/ip/sys_pll/sys_pll.xci}}

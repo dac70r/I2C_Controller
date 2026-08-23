@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date         : Thu Aug 20 00:09:57 2026
+| Date         : Sun Aug 23 10:11:57 2026
 | Host         : DennisE16 running 64-bit major release  (build 9200)
 | Command      : report_drc -file top_module_drc_routed.rpt -pb top_module_drc_routed.pb -rpx top_module_drc_routed.rpx
 | Design       : top_module
@@ -24,12 +24,12 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 18
+             Violations found: 19
 +----------+----------+-----------------------------------------------------+------------+
 | Rule     | Severity | Description                                         | Violations |
 +----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1 | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
-| PDRC-153 | Warning  | Gated clock check                                   | 17         |
+| PDRC-153 | Warning  | Gated clock check                                   | 18         |
 +----------+----------+-----------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -130,6 +130,11 @@ Related violations: <none>
 PDRC-153#17 Warning
 Gated clock check  
 Net my_i2c_core/i2c_data_storage_reg[1][7]_i_1_n_0 is a gated clock net sourced by a combinational pin my_i2c_core/i2c_data_storage_reg[1][7]_i_1/O, cell my_i2c_core/i2c_data_storage_reg[1][7]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#18 Warning
+Gated clock check  
+Net my_seven_segment_core/seg_reg_reg[6]_i_2_n_0 is a gated clock net sourced by a combinational pin my_seven_segment_core/seg_reg_reg[6]_i_2/O, cell my_seven_segment_core/seg_reg_reg[6]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 

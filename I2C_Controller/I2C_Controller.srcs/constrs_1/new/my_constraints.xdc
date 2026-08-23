@@ -12,8 +12,8 @@ create_clock -period 10.000 -name sys_clk_pin -waveform {0.000 5.000} -add [get_
 # Switches
 #set_property PACKAGE_PIN V17 [get_ports {reset_n}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {reset_n}]
-set_property PACKAGE_PIN V16 [get_ports reset_n]
-set_property IOSTANDARD LVCMOS33 [get_ports reset_n]
+#set_property PACKAGE_PIN V16 [get_ports reset_n]
+#set_property IOSTANDARD LVCMOS33 [get_ports reset_n]
 #set_property PACKAGE_PIN W16 [get_ports {SW[2]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {SW[2]}]
 #set_property PACKAGE_PIN W17 [get_ports {SW[3]}]
@@ -112,28 +112,28 @@ set_property IOSTANDARD LVCMOS33 [get_ports {LED[15]}]
 
 ##7 segment display
 #Bank = 34, Pin name = ,						Sch name = CA
-#set_property PACKAGE_PIN W7 [get_ports {SSEG_CA[0]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[0]}]
-##Bank = 34, Pin name = ,					Sch name = CB
-#set_property PACKAGE_PIN W6 [get_ports {SSEG_CA[1]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[1]}]
-##Bank = 34, Pin name = ,					Sch name = CC
-#set_property PACKAGE_PIN U8 [get_ports {SSEG_CA[2]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[2]}]
-##Bank = 34, Pin name = ,						Sch name = CD
-#set_property PACKAGE_PIN V8 [get_ports {SSEG_CA[3]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[3]}]
-##Bank = 34, Pin name = ,						Sch name = CE
-#set_property PACKAGE_PIN U5 [get_ports {SSEG_CA[4]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[4]}]
-##Bank = 34, Pin name = ,						Sch name = CF
-#set_property PACKAGE_PIN V5 [get_ports {SSEG_CA[5]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[5]}]
-##Bank = 34, Pin name = ,						Sch name = CG
-#set_property PACKAGE_PIN U7 [get_ports {SSEG_CA[6]}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[6]}]
+set_property PACKAGE_PIN W7 [get_ports {SSEG_CA[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[0]}]
+#Bank = 34, Pin name = ,					Sch name = CB
+set_property PACKAGE_PIN W6 [get_ports {SSEG_CA[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[1]}]
+#Bank = 34, Pin name = ,					Sch name = CC
+set_property PACKAGE_PIN U8 [get_ports {SSEG_CA[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[2]}]
+#Bank = 34, Pin name = ,						Sch name = CD
+set_property PACKAGE_PIN V8 [get_ports {SSEG_CA[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[3]}]
+#Bank = 34, Pin name = ,						Sch name = CE
+set_property PACKAGE_PIN U5 [get_ports {SSEG_CA[4]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[4]}]
+#Bank = 34, Pin name = ,						Sch name = CF
+set_property PACKAGE_PIN V5 [get_ports {SSEG_CA[5]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[5]}]
+#Bank = 34, Pin name = ,						Sch name = CG
+set_property PACKAGE_PIN U7 [get_ports {SSEG_CA[6]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[6]}]
 
-###Bank = 34, Pin name = ,						Sch name = DP
+##Bank = 34, Pin name = ,						Sch name = DP
 #set_property PACKAGE_PIN V7 [get_ports {SSEG_CA[7]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_CA[7]}]
 
@@ -153,8 +153,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports {SSEG_AN[3]}]
 
 #Buttons
 #Bank = 14, Pin name = ,					Sch name = BTNC
-#set_property PACKAGE_PIN U18 [get_ports {push_button}]
-#set_property IOSTANDARD LVCMOS33 [get_ports {push_button}]
+set_property PACKAGE_PIN U18 [get_ports {reset_n}]
+set_property IOSTANDARD LVCMOS33 [get_ports {reset_n}]
 ##Bank = 14, Pin name = ,					Sch name = BTNU
 #set_property PACKAGE_PIN T18 [get_ports {BTN[0]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {BTN[0]}]
@@ -209,8 +209,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports sclk]
 set_property PULLTYPE PULLUP [get_ports sclk]
 
 ##Sch name = JB3
-set_property PACKAGE_PIN B15 [get_ports i2c_transaction_complete]
-set_property IOSTANDARD LVCMOS33 [get_ports i2c_transaction_complete]
+#set_property PACKAGE_PIN B15 [get_ports i2c_transaction_complete]
+#set_property IOSTANDARD LVCMOS33 [get_ports i2c_transaction_complete]
 ##Sch name = JB4
 #set_property PACKAGE_PIN B16 [get_ports {JB[3]}]
 #set_property IOSTANDARD LVCMOS33 [get_ports {JB[3]}]
@@ -231,8 +231,8 @@ set_property IOSTANDARD LVCMOS33 [get_ports i2c_transaction_complete]
 
 ##Pmod Header JC
 ##Sch name = JC1
-set_property PACKAGE_PIN K17 [get_ports {test_port}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {test_port}]
+#set_property PACKAGE_PIN K17 [get_ports {test_port}]					
+#	set_property IOSTANDARD LVCMOS33 [get_ports {test_port}]
 ##Sch name = JC2
 #set_property PACKAGE_PIN M18 [get_ports {JC[1]}]					
 	#set_property IOSTANDARD LVCMOS33 [get_ports {JC[1]}]

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2023.2 (win64) Build 4029153 Fri Oct 13 20:14:34 MDT 2023
-| Date             : Thu Aug 20 00:09:59 2026
+| Date             : Sun Aug 23 10:11:59 2026
 | Host             : DennisE16 running 64-bit major release  (build 9200)
 | Command          : report_power -file top_module_power_routed.rpt -pb top_module_power_summary_routed.pb -rpx top_module_power_routed.rpx
 | Design           : top_module
@@ -30,14 +30,14 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.181        |
+| Total On-Chip Power (W)  | 0.199        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.109        |
+| Dynamic (W)              | 0.127        |
 | Device Static (W)        | 0.072        |
 | Effective TJA (C/W)      | 5.0          |
-| Max Ambient (C)          | 84.1         |
-| Junction Temperature (C) | 25.9         |
+| Max Ambient (C)          | 84.0         |
+| Junction Temperature (C) | 26.0         |
 | Confidence Level         | Low          |
 | Setting File             | ---          |
 | Simulation Activity File | ---          |
@@ -52,18 +52,18 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |    <0.001 |        8 |       --- |             --- |
-| Slice Logic    |    <0.001 |      192 |       --- |             --- |
-|   LUT as Logic |    <0.001 |       84 |     20800 |            0.40 |
-|   CARRY4       |    <0.001 |        7 |      8150 |            0.09 |
-|   Register     |    <0.001 |       76 |     41600 |            0.18 |
+| Clocks         |     0.001 |        6 |       --- |             --- |
+| Slice Logic    |     0.003 |      594 |       --- |             --- |
+|   LUT as Logic |     0.002 |      308 |     20800 |            1.48 |
+|   CARRY4       |    <0.001 |       38 |      8150 |            0.47 |
+|   Register     |    <0.001 |      131 |     41600 |            0.31 |
 |   BUFG         |    <0.001 |        1 |        32 |            3.13 |
-|   Others       |     0.000 |       13 |       --- |             --- |
-| Signals        |    <0.001 |      161 |       --- |             --- |
+|   Others       |     0.000 |       22 |       --- |             --- |
+| Signals        |     0.002 |      480 |       --- |             --- |
 | MMCM           |     0.106 |        1 |         5 |           20.00 |
-| I/O            |     0.002 |       25 |       106 |           23.58 |
+| I/O            |     0.015 |       32 |       106 |           30.19 |
 | Static Power   |     0.072 |          |           |                 |
-| Total          |     0.181 |          |           |                 |
+| Total          |     0.199 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,9 +73,9 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.011 |       0.001 |      0.010 |       NA    | Unspecified | NA         |
-| Vccaux    |       1.800 |     0.071 |       0.059 |      0.013 |       NA    | Unspecified | NA         |
-| Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.016 |       0.006 |      0.010 |       NA    | Unspecified | NA         |
+| Vccaux    |       1.800 |     0.072 |       0.059 |      0.013 |       NA    | Unspecified | NA         |
+| Vcco33    |       3.300 |     0.005 |       0.004 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |       NA    | Unspecified | NA         |
@@ -126,16 +126,14 @@ Table of Contents
 2.2 Clock Constraints
 ---------------------
 
-+--------------------+-----------------------------------+-----------------+
-| Clock              | Domain                            | Constraint (ns) |
-+--------------------+-----------------------------------+-----------------+
-| clk_out1_sys_pll   | clock_40mhz/inst/clk_out1_sys_pll |            25.0 |
-| clk_out1_sys_pll_1 | clock_40mhz/inst/clk_out1_sys_pll |            25.0 |
-| clkfbout_sys_pll   | clock_40mhz/inst/clkfbout_sys_pll |            10.0 |
-| clkfbout_sys_pll_1 | clock_40mhz/inst/clkfbout_sys_pll |            10.0 |
-| sys_clk            | sys_clk                           |            10.0 |
-| sys_clk_pin        | sys_clk                           |            10.0 |
-+--------------------+-----------------------------------+-----------------+
++------------------+-----------------------------------+-----------------+
+| Clock            | Domain                            | Constraint (ns) |
++------------------+-----------------------------------+-----------------+
+| clk_out1_sys_pll | clock_40mhz/inst/clk_out1_sys_pll |            25.0 |
+| clkfbout_sys_pll | clock_40mhz/inst/clkfbout_sys_pll |            10.0 |
+| sys_clk_pin      | sys_clk                           |            10.0 |
+| sys_clk_pin      | sys_clk_IBUF_BUFG                 |            10.0 |
++------------------+-----------------------------------+-----------------+
 
 
 3. Detailed Reports
@@ -144,12 +142,14 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+---------------+-----------+
-| Name          | Power (W) |
-+---------------+-----------+
-| top_module    |     0.109 |
-|   clock_40mhz |     0.106 |
-|     inst      |     0.106 |
-+---------------+-----------+
++-----------------------------+-----------+
+| Name                        | Power (W) |
++-----------------------------+-----------+
+| top_module                  |     0.127 |
+|   clock_40mhz               |     0.106 |
+|     inst                    |     0.106 |
+|   my_binary_convert_decimal |     0.001 |
+|   my_i2c_core               |     0.003 |
++-----------------------------+-----------+
 
 
