@@ -1,5 +1,7 @@
 # Repository for I2C Controller Design
 This I2C Controller is designed to accomodate the BH1750FVI Ambient Light Sensor. Slight modifications might be necessary to reuse this I2C Controller with other I2C device.
+![Alt text](i2c_waveform_logic_analyzer/project_image.png)
+![Demo Video for I2C BH1750 on Basys3](https://youtu.be/s1wKcilw73c)
 
 ## I2C Protocol Overview
 I2C is a half-duplex communication protocol, only a single controller can claim ownership of the I2C bus at a given time. Communication is initiated and ceased exclusively by an I2C Controller - which eliminates bus contention problems. That said, multiple controllers may connect to the I2C bus at the same time. 
